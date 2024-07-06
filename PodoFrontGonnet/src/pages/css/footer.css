@@ -1,0 +1,86 @@
+.footer {
+    background-color: #ffc5ff;
+    width: 100%;
+    min-height: 50px;
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 4rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: #333333;
+    margin: 0;
+}
+
+.copy span {
+    color: #333333;
+}
+
+.copy span:hover {
+    color: #8a2be2;
+    font-weight: 600;
+}
+
+i {
+    margin-top: 0.4rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
+.footer-icon a {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background-color: #ebebeb;
+    align-items: center;
+    justify-content: center;
+    padding: auto;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #fff;
+    z-index: 1;
+    margin-left: 0.5rem;
+}
+
+.footer-icon a .icon {
+    position: relative;
+    color: #8a2be2;
+    transition: 0.5s;
+    z-index: 3;
+}
+
+.footer-icon a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+}
+
+.footer-icon a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #c05fff;
+    transition: 0.5s;
+    z-index: 2;
+}
+
+.footer-icon a:hover:before {
+    top: 0;
+}
+
+.footer-icon a svg:nth-child(1) a:before {
+    background: #8a2be2;
+}

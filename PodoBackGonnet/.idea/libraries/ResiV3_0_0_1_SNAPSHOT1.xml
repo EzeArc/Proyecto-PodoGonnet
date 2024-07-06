@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ResiV3-0.0.1-SNAPSHOT1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../ResiAppV3/ResiAppBack/target/ResiV3-0.0.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
