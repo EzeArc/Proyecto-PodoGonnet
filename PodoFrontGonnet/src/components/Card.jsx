@@ -24,13 +24,7 @@ const Card = ({ listaServicios }) => {
         <h5 className="card-title1">{nombre}</h5>
         <p className="card-text1">{descripcion}</p>
       </div>
-      <Link
-        to={`/servicio/${id}`}
-        className="card-button"
-        onClick={() => {
-          seleccionarServicio(id);
-        }}
-      >
+      <Link to={`/servicio/${id}`} className="card-button">
         Mas informacion
       </Link>
     </div>

@@ -5,15 +5,15 @@ import "../pages/css/servicios.css";
 import Calendario from "../components/Calendario";
 import useTitle from "./../hooks/useTitle";
 const Servicios = () => {
-  const { servicio, seleccionarServicio, usuarioLogeado } = useContext(
-    ContextoAdministrador
-  );
+  const { servicio, seleccionarServicio, usuarioLogeado, AuthuTokenYUsiario } =
+    useContext(ContextoAdministrador);
   const { id } = useParams();
 
   useEffect(() => {
     if (!servicio || servicio.id !== id) {
       // Esto solo llama seleccionarServicio si el nombre del servicio no coincide con el actual
       seleccionarServicio(id);
+      AuthuTokenYUsiario();
     }
   }, [id]);
 
