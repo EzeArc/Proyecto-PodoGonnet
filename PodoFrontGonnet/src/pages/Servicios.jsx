@@ -6,9 +6,12 @@ import "../pages/css/servicios.css"
 import Calendario from '../components/Calendario';
 const Servicios = () => {
   const { servicio, usuarioLogeado } = useContext(ContextoAdministrador)
+  
   if (!servicio) {
     return <div>Cargando...Servicio</div>
   }
+
+
   const imagenBase64 = servicio.imagen.content;
   const imagenURL = `data:${servicio.imagen.mime};base64,${imagenBase64}`;
   return (

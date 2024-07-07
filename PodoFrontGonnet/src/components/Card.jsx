@@ -20,7 +20,7 @@ const Card = ({ listaServicios }) => {
     />
     <div className="card-text-container">
       <h5 className="card-title1">{listaServicios.nombre}</h5>
-      <p className="card-text1">{listaServicios.descripcion}
+      <p className="card-text">{listaServicios.descripcion}
       </p>
     </div>
     <Button listaServicios={listaServicios.id} className='card-button' >Mas informacion</Button>

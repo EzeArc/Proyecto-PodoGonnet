@@ -22,7 +22,7 @@ public class Turno {
     @ManyToOne
     private ServicioPodo servicioPodo;
     private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private LocalDateTime  run d|;
     private boolean estado;
     @ManyToOne
     private Usuario usuario;

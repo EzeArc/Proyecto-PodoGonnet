@@ -17,7 +17,6 @@ const Inicio = () => {
 
 
   useEffect(() => {
-
     AuthuTokenYUsiario()
     serviciosBack()
     listaTurnos()
