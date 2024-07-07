@@ -36,7 +36,7 @@
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   transition: all 1s;
-  z-index: 0; /* Ensure the button is below the links */
+  z-index: 0;
 }
 
 .btn::after,
@@ -47,7 +47,7 @@
   position: absolute;
   border: 0px solid #c05fff;
   transition: all 1s;
-  z-index: -1; /* Place pseudo-elements below the button */
+  z-index: -1;
 }
 
 .btn::after {

@@ -31,14 +31,13 @@ const Navbar = () => {
                 <Link to={"/login"}>Login</Link>{" "}
               </>
             ) : (
-              <button
-                className=" botonNav "
+              <Link
                 onClick={() => {
                   logOut();
                 }}
               >
                 Cerrar Sesion
-              </button>
+              </Link>
             )}
           </li>
         </ul>
