@@ -1,25 +1,21 @@
-
-import {  Route, Routes } from 'react-router-dom'
-import Inicio from '../pages/Inicio'
-import Register from '../pages/Register'
-import Login from '../pages/Login'
-import Servicios from '../pages/Servicios'
-
-
-
+import { Route, Routes } from "react-router-dom";
+import Inicio from "../pages/Inicio";
+import Register from "../pages/Register";
+import Login from "../pages/Login";
+import Servicios from "../pages/Servicios";
 
 const AuthRouters = () => {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Inicio />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/registro' element={<Register />} />     
-        <Route path='/servicio' element={<Servicios />} />
-        
+        <Route path="/" element={<Inicio />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/registro" element={<Register />} />
+        {/* <Route path="/servicio" element={<Servicios />} /> */}
+        <Route path="/servicio/:id" element={<Servicios />} />
       </Routes>
     </>
-  )
-}
+  );
+};
 
-export default AuthRouters
+export default AuthRouters;

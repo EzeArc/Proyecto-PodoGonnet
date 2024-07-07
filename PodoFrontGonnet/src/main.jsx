@@ -1,21 +1,16 @@
-import * as bootstrao from 'bootstrap'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Routes} from 'react-router-dom'
-import Navbar from './components/Navbar'
-import { ContextLoginRegister } from './context/ContextLoginRegister'
-import AppRouters from './routers/AppRouters'
-import Footer from './components/Footer'
-import Seccion from './components/Seccion'
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { ContextLoginRegister } from "./context/ContextLoginRegister";
+import AppRouters from "./routers/AppRouters";
+import Footer from "./components/Footer";
 
-
-
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextLoginRegister>
     <BrowserRouter>
       <Navbar />
       <AppRouters />
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   </ContextLoginRegister>
-)
+);
