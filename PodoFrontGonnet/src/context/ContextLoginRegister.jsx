@@ -146,11 +146,10 @@ const ContextLoginRegister = ({ children }) => {
   const eliminarTurno = async (e, turnoId) => {
     try {
       e.preventDefault();
-      console.log("Holu");
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarTurno = urlBackCancelarTurno + turnoId;
       const respuesta = await getToken(urlCancelarTurno, jwt);
-      listaTurnos()
+      listaTurnos();
     } catch (error) {
       console.log("error ");
     }
