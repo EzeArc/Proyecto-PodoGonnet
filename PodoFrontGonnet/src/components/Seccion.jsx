@@ -1,7 +1,7 @@
 import "../pages/css/seccion.css";
 const Seccion = () => {
   return (
-    <section className="intro-section">
+    <section className="hero-section">
       <div className="hero-container">
         <div className="hero-text-container headline">
           <span className="hero-text">

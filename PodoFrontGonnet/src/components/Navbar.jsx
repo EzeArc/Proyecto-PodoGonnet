@@ -8,12 +8,16 @@ const Navbar = () => {
   return (
     <header>
       <nav className="navbar1">
-        <ul className="nav-list2">
-          <li className="nav-item2 btn">
-            <Link to="/">Inicio</Link>
+        <ul className="nav-links-items">
+          <li className="nav-link-item btn">
+            <Link className="active-link" to="/">
+              Inicio
+            </Link>
           </li>
-          <li className="nav-item btn">
-            <Link to="/sobre-nosotros">Sobre Nosotros</Link>
+          <li className="nav-link-item btn">
+            <Link className="active-link" to="/sobre-nosotros">
+              Sobre Nosotros
+            </Link>
           </li>
         </ul>
         <img
@@ -21,14 +25,18 @@ const Navbar = () => {
           src="/src/assets/ImagenesOptimizadas/CC2E1AA6-02E9-4DF2-BBD6-8BD62A378986.webp"
           alt="Podo Estetica"
         />
-        <ul className="nav-list2">
-          <li className="nav-item2 btn">
-            <Link to={"/registro"}>Registrarse</Link>
+        <ul className="nav-links-items">
+          <li className="nav-link-item btn">
+            <Link className="active-link" to={"/registro"}>
+              Registrarse
+            </Link>
           </li>
-          <li className="nav-item2 btn">
+          <li className="nav-link-item btn">
             {usuarioLogeado.Auth == false ? (
               <>
-                <Link to={"/login"}>Login</Link>{" "}
+                <Link className="active-link" to={"/login"}>
+                  Login
+                </Link>{" "}
               </>
             ) : (
               <Link
