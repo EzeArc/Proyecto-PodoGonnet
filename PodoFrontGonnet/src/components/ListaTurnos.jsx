@@ -32,8 +32,9 @@ const ListaTurnos = () => {
                 <thead className="tabla-header">
                   <tr>
                     <th scope="col">Nombre del servicio</th>
-                    <th scope="col">hora del turno</th>
-                    <th scope="col">costo</th>
+                    <th scope="col">Hora del turno</th>
+                    <th scope="col">Fin del turno</th>
+                    <th scope="col">Costo</th>
                     <th scope="col">Modificar</th>
                   </tr>
                 </thead>
