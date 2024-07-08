@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import ContextoAdministrador from "./../context/ContextLoginRegister";
-// import Button from "./Button";
 
 const Card = ({ listaServicios }) => {
   const { nombre, imagen, descripcion, costo, id } = listaServicios;
