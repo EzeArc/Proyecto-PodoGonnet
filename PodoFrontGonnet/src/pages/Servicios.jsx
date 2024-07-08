@@ -22,6 +22,8 @@ const Servicios = () => {
   if (!servicio) {
     return <div>Cargando...Servicio</div>;
   }
+
+
   const imagenBase64 = servicio.imagen.content;
   const imagenURL = `data:${servicio.imagen.mime};base64,${imagenBase64}`;
   return (
