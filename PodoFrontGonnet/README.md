@@ -1,8 +1,11 @@
-# React + Vite
+# COLOR PALETTE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Fondo y contenedores: Utiliza el blanco (#fefefe) como fondo principal para toda la página. Los contenedores de secciones, como encabezados, bloques de texto y áreas de contenido, pueden tener este color.
 
-Currently, two official plugins are available:
+- Encabezados y botones destacados: Usa el rosa suave (#ff9abf) para resaltar los encabezados, títulos y botones importantes. Esto ayudará a que estos elementos se destaquen y sean más llamativos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Texto regular: El negro (#050505) es adecuado para el texto regular. Asegúrate de que sea lo suficientemente legible en contraste con el fondo blanco.
+
+- Detalles y acentos: El rosa más claro (#ffc5ff) y el rosa empolvado (#FFD3E6) pueden usarse para detalles sutiles, como líneas divisorias, iconos o bordes. Por ejemplo, puedes aplicar estos colores a los bordes de las tarjetas de servicios o a los íconos de redes sociales.
+
+- Enlaces y botones secundarios: Considera usar el verde menta (#B2FFC8) para enlaces o botones secundarios. Esto agregará un toque fresco y agradable.

@@ -1,17 +1,32 @@
-import React from 'react'
-import "../pages/css/Introduccion.css"
+import "../pages/css/Introduccion.css";
 const Introduccion = () => {
-    return (
+  return (
+    <section className="welcome-section ">
+      <img
+        src="/src/assets/ImagenesOptimizadas/human-footprints.png"
+        alt="Pie Izquierdo"
+        className="left-foot"
+      />
 
-        <section className="frame ">
-            <div className="meet-paint-box">Podo Estetica</div>
-            <p className="experience-nail-art h3">
-                <span className="text-wrapper">La podoestética y el cuidado continuo de los pies previenen enfermedades, mejoran la salud podológica y estética, y aumentan el bienestar general. Ofrecen tratamientos especializados para eliminar callos, hongos y durezas, mejorando la apariencia y comodidad. Mantener una rutina de cuidado podal garantiza pies sanos y estéticamente agradables.</span>
-            </p>
-        </section>
+      <div className="welcome-title">Bienvenidos a Podo Estética La Plata</div>
+      <p className="welcome-text">
+        En Podo Estética, nos dedicamos a mejorar y{" "}
+        <strong>mantener la belleza de tus pies y uñas</strong>. Combinando
+        productos de alta calidad con un compromiso absoluto hacia tu bienestar.
+      </p>
+      <p className="welcome-text">
+        Ofrecemos servicios de <strong>medicina estética de excelencia</strong>.
+        Desde limpieza de uñas encarnadas hasta tratamientos de micosis, estamos
+        aquí para{" "}
+        <strong>cuidar tus pies y brindarte una experiencia relajante</strong>.
+      </p>
+      <img
+        src="/src/assets/ImagenesOptimizadas/human-footprints.png"
+        alt="Pie Derecho"
+        className="right-foot"
+      />
+    </section>
+  );
+};
 
-    )
-}
-
-
-export default Introduccion
+export default Introduccion;
