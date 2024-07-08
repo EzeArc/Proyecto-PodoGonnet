@@ -138,6 +138,7 @@ const ContextLoginRegister = ({ children }) => {
       let jwt = window.localStorage.getItem("auth_token");
       const respuesta = await getToken(urlback, jwt);
       setarrayTurnos(respuesta);
+
     } catch (error) {
       console.log("error 171");
     }

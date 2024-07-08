@@ -30,6 +30,8 @@ const Calendario = ({ servicioId }) => {
       }
       const data = await response.json();
       setturno(data);
+      console.log("turnos disponibles");
+      console.log(data);
     } catch (error) {
       console.error("Error fetching appointments", error);
     }
@@ -83,7 +85,7 @@ const Calendario = ({ servicioId }) => {
         className="date-container animateanimated animatefadeIn animate__delay-5s"
       >
         <p className="date-text">
-          {new Date(app.startTime).toLocaleTimeString()} -{" "}
+          {app.id}-{new Date(app.startTime).toLocaleTimeString()} -{" "}
           {new Date(app.endTime).toLocaleTimeString()}
           <button
             className="date-button"
@@ -95,6 +97,28 @@ const Calendario = ({ servicioId }) => {
           </button>
         </p>
       </div>
+      /*             <div key={app.id} className=''>
+                            <table className="table table-danger  border-radius-custom">
+                                <thead >
+                                    <tr >
+                                        <th scope="col">Inicio del turno</th>
+                                        <th scope="col">Fin del turno</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody >
+                                    <tr>
+                                        <td>{new Date(app.startTime).toLocaleTimeString()}</td>
+                                        <td>{new Date(app.endTime).toLocaleTimeString()}</td>
+                                        <td>                {usuarioLogeado.Rol === 'USER' ?
+                                <button className='btnTabla' onClick={() => bookAppointment(app.id)} disabled={app.estado}>
+                                    {app.estado ? 'Reservado' : 'Reservar'}
+                                </button>
+                                : null}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div> */
     ));
   };
 
