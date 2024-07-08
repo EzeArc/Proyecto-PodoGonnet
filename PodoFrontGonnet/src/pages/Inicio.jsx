@@ -20,6 +20,7 @@ const Inicio = () => {
     serviciosBack,
     arrayTurnos,
     listaTurnos,
+    eliminarTurno
   } = useContext(ContextoAdministrador);
 
   useEffect(() => {

@@ -3,8 +3,10 @@ import ContextoAdministrador from '../context/ContextLoginRegister'
 import TablaTurnos from './TablaTurnos'
 import "../pages/css/listaTurno.css"
 const ListaTurnos = () => {
+
+
     const { arrayTurnos, listaTurnos } = useContext(ContextoAdministrador)
- console.log("hola")
+    console.log("hola")
     return (
         <div className="accordion my-5" id="accordionExample">
             <div className="accordion-item">

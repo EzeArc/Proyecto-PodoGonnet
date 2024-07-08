@@ -150,6 +150,7 @@ const ContextLoginRegister = ({ children }) => {
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarTurno = urlBackCancelarTurno + turnoId;
       const respuesta = await getToken(urlCancelarTurno, jwt);
+      listaTurnos()
     } catch (error) {
       console.log("error ");
     }
