@@ -26,6 +26,7 @@ const Calendario = ({ servicioId }) => {
             }
             const data = await response.json();
             setturno(data);
+            console.log("turnos disponibles")
             console.log(data);
         } catch (error) {
             console.error('Error fetching appointments', error);
@@ -78,7 +79,7 @@ const Calendario = ({ servicioId }) => {
                 className="date-container animateanimated animatefadeIn animate__delay-5s"
             >
                 <p className="date-text">
-                    {new Date(app.startTime).toLocaleTimeString()} -  {new Date(app.endTime).toLocaleTimeString()}
+                    {app.id}-{new Date(app.startTime).toLocaleTimeString()} -  {new Date(app.endTime).toLocaleTimeString()}
                     <button className="date-button" onClick={() => bookAppointment(app.id)} disabled={app.estado}>  {app.estado ? 'Reservado' : 'Reservar'}</button>
                 </p>
             </div>
