@@ -1,100 +1,100 @@
 @import 'bootstrap';
 
 .card-section {
-    margin: 6rem 4rem !important;
-    min-height: 1000px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-  
-  .card-container {
-    width: calc(30% - 2rem) !important;
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    box-shadow: 5px 5px 10px 1px #f6dbd6;
-    border-radius: 16px 16px 0 0 !important;
-    transition: transform 0.3s, opacity 0.3s;
-  }
-  
-  .card-container:hover {
-    transform: scale(1.1);
-    border: 1px solid beige;
-  }
-  
-  .card-img {
-    object-fit: cover;
-    object-position: center;
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    border-radius: inherit !important;
-  }
-  
-  .card-img2 {
-    position: absolute;
-    animation: fade 1s ease-in-out;
-    object-fit: cover;
-    object-position: center;
-    filter: blur(50px);
-    z-index: -10;
-  }
-  
-  .card-text-container {
-    margin: 0.5rem;
-    font-family: system-ui, -apple-system;
-  }
-  
-  .card-title1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #c05fff;
-    letter-spacing: 0.1rem;
-  }
-  
-  .card-text1 {
-    font-weight: 300;
-    font-size: 1.2rem;
-    line-height: 1.8rem;
-    margin-bottom: 1rem;
-    color: #5c5c5c;
-  }
-  
-  .card-text-price {
-    font-size: 1.3rem;
-    font-weight: 400;
-    color: #333333;
-  }
-  
-  .price {
-    font-weight: 500;
-    border-radius: 8px;
-    padding: 8px 12px;
-    background-color: #ffc5ff;
-  }
-  
-  .card-button {
-    margin: 1rem 0;
-    padding: 16px;
-    background-color: #8a2be2;
-    border-radius: 10px;
-    font-weight: 500;
-    color: #ffffff;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease,
-      transform 0.3s ease;
-  }
-  
-  .card-button:hover {
-    background-color: #c05fff;
-    box-shadow: 0px 4px 15px rgba(122, 62, 59, 0.5);
-    transform: scale(1.05);
-    color: #ffffff;
-  }
+  margin: 6rem 4rem !important;
+  min-height: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.card-container {
+  width: calc(30% - 2rem) !important;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  box-shadow: 5px 5px 10px 1px #f6dbd6;
+  border-radius: 16px 16px 0 0 !important;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.card-container:hover {
+  transform: scale(1.1);
+  border: 1px solid beige;
+}
+
+.card-img {
+  object-fit: cover;
+  object-position: center;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: inherit !important;
+}
+
+.card-img2 {
+  position: absolute;
+  animation: fade 1s ease-in-out;
+  object-fit: cover;
+  object-position: center;
+  filter: blur(50px);
+  z-index: -10;
+}
+
+.card-text-container {
+  margin: 0.5rem;
+  font-family: system-ui, -apple-system;
+}
+
+.card-title1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffa5a7;
+  letter-spacing: 0.1rem;
+}
+
+.card-text1 {
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin-bottom: 1rem;
+  color: #5c5c5c;
+}
+
+.card-text-price {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #333333;
+}
+
+.price {
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background-color: #ffc5ff;
+}
+
+.card-button {
+  margin: 1rem 0;
+  padding: 16px;
+  background-color: #FCD5D6;
+  border-radius: 10px;
+  font-weight: 500;
+  color: #ffffff;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card-button:hover {
+  background-color: #FCD5D6;
+  box-shadow: 0px 4px 15px rgba(122, 62, 59, 0.5);
+  transform: scale(1.05);
+  color: #ffffff;
+}
