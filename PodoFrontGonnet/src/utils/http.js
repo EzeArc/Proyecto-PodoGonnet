@@ -22,9 +22,9 @@ export const getToken = async (url, token) => {
     try {
         const fetchConfig = {
             method: "GET",
-            headers: { 
+            headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}` 
+                "Authorization": `Bearer ${token}`
             }
         };
         const respuesta = await fetch(url, fetchConfig);
@@ -33,7 +33,7 @@ export const getToken = async (url, token) => {
             throw new Error(respuesta.status + " error en fetch " + respuesta.statusText);
         }
         const data = await respuesta.json();
-
+        console.log(data)
         return data;
 
     } catch (error) {
