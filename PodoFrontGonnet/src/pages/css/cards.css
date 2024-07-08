@@ -11,12 +11,12 @@
   justify-content: center;
 }
 
-.card-container {
+.article-container {
   width: calc(30% - 2rem) !important;
   margin: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   text-align: left;
   box-shadow: 5px 5px 10px 1px #f6dbd6;
@@ -24,12 +24,12 @@
   transition: transform 0.3s, opacity 0.3s;
 }
 
-.card-container:hover {
+.article-container:hover {
   transform: scale(1.1);
   border: 1px solid beige;
 }
 
-.card-img {
+.service-img {
   object-fit: cover;
   object-position: center;
   aspect-ratio: 16 / 9;
@@ -37,7 +37,7 @@
   border-radius: inherit !important;
 }
 
-.card-img2 {
+.service-img-bg {
   position: absolute;
   animation: fade 1s ease-in-out;
   object-fit: cover;
@@ -46,19 +46,19 @@
   z-index: -10;
 }
 
-.card-text-container {
+.article-text-container {
   margin: 0.5rem;
   font-family: system-ui, -apple-system;
 }
 
-.card-title1 {
+.article-title {
   font-size: 2rem;
   font-weight: 800;
   color: #ff9abf;
   letter-spacing: 0.2rem;
 }
 
-.card-text1 {
+.article-text1 {
   font-weight: 300;
   font-size: 1.2rem;
   line-height: 1.8rem;
@@ -66,7 +66,7 @@
   color: #050505;
 }
 
-.card-text-price {
+.article-text-price {
   font-size: 1.3rem;
   font-weight: 400;
   color: #050505;
@@ -79,7 +79,7 @@
   background-color: #ffc5ff;
 }
 
-.card-button {
+.article-button {
   margin: 1rem 0;
   padding: 16px;
   background-color: #ff9abf;
@@ -90,7 +90,7 @@
     transform 0.3s ease;
 }
 
-.card-button:hover {
+.article-button:hover {
   background-color: #ffd3e6;
   box-shadow: 0px 4px 15px rgba(255, 197, 255, 0.8);
   transform: scale(1.05);
