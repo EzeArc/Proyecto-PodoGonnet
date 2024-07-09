@@ -38,16 +38,20 @@ public class AdminController {
 
     }
 
-    @GetMapping("/listaServicioAdmin")
+    @GetMapping("/listaTurnoAdmin")
     public ResponseEntity<List<Turno>> listaTurno(){
         return ResponseEntity.ok(turnoServicio.findAll());
     }
 
 
 
-    @PutMapping("/editar")
-    public void editarServicio(){
-
+    @PutMapping("/editar/{id}")
+    public void editarServicio(@PathVariable String id){
+try {
+     podoServicio.AltaBaja(id);
+}catch (Exception e){
+    e.getStackTrace();
+}
 
     }
 

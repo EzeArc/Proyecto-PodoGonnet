@@ -68,4 +68,8 @@ public class PodoServicio {
            return podoRepository.findById(id).orElseThrow(null);
 
     }
+
+    public void AltaBaja(String id) {
+
+    }
 }
