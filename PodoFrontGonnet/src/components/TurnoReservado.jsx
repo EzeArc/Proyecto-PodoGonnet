@@ -8,6 +8,7 @@ const TurnoReservado = ({ listaTurnos }) => {
       <tr>
         <td>{listaTurnos.servicioPodo.nombre}</td>
         <td>{listaTurnos.startTime}</td>
+        <td>{listaTurnos.endTime}</td>
         <td>{listaTurnos.servicioPodo.costo}</td>
         <td>
           <button

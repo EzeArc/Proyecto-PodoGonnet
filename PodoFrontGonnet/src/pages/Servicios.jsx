@@ -23,7 +23,6 @@ const Servicios = () => {
     return <div>Cargando...Servicio</div>;
   }
 
-
   const imagenBase64 = servicio.imagen.content;
   const imagenURL = `data:${servicio.imagen.mime};base64,${imagenBase64}`;
   return (
@@ -47,15 +46,13 @@ const Servicios = () => {
         </div>
       </section>
 
-      <div className="calendar-section">
-        {usuarioLogeado.Auth === false ? (
-          <Link className="hero-button" to={"/login"}>
-            Contratar
-          </Link>
-        ) : (
-          <Calendario servicioId={servicio.id} />
-        )}
-      </div>
+      {usuarioLogeado.Auth === false ? (
+        <Link className="hero-button" to={"/login"}>
+          Contratar
+        </Link>
+      ) : (
+        <Calendario servicioId={servicio.id} />
+      )}
     </>
   );
 };
