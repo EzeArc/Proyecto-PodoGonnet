@@ -3,6 +3,7 @@ import ContextoAdministrador from "../context/ContextLoginRegister";
 import TurnoReservado from "./TurnoReservado";
 import "../pages/css/listaTurno.css";
 
+
 const ListaTurnos = () => {
   const { arrayTurnos } = useContext(ContextoAdministrador);
   console.log(arrayTurnos);
@@ -27,13 +28,13 @@ const ListaTurnos = () => {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            {arrayTurnos && arrayTurnos.length > 0 ? (
+            {arrayTurnos && arrayTurnos.length > 0 && arrayTurnos.some(e => e.estado === true) ? (
               <table className="table align-middle">
                 <thead className="tabla-header">
                   <tr>
                     <th scope="col">Nombre del servicio</th>
                     <th scope="col">Hora del turno</th>
-                    <th scope="col">Fin del turno</th>
+
                     <th scope="col">Costo</th>
                     <th scope="col">Modificar</th>
                   </tr>
