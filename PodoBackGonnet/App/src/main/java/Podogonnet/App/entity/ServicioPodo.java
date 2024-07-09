@@ -21,4 +21,6 @@ public class ServicioPodo {
     private double costo;
     @OneToOne
     private Imagen imagen;
+    private boolean estado;
+
 }

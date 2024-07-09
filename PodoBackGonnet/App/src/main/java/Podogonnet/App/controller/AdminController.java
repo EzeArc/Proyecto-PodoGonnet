@@ -38,12 +38,26 @@ public class AdminController {
 
     }
 
+    @GetMapping("/listaServicioAdmin")
+    public ResponseEntity<List<Turno>> listaTurno(){
+        return ResponseEntity.ok(turnoServicio.findAll());
+    }
+
+
+
+    @PutMapping("/editar")
+    public void editarServicio(){
+
+
+    }
+
+
+
 //    @PostMapping("/listaTurnos/{idTurno}/{idServicio}")
 //    public ResponseEntity<Turno> bookAppointment(@PathVariable String idTurno, @PathVariable String idServicio) {
 //
 //        return ResponseEntity.ok();
 //    }
-
 
 
 }

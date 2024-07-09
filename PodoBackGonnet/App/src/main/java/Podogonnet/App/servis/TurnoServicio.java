@@ -93,6 +93,9 @@ public class TurnoServicio {
         }
     }
 
+    public List<Turno> findAll() {
+         return turnoRepository.findAll();
+    }
 }
 
 
