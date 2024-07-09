@@ -40,12 +40,12 @@ const Inicio = () => {
       <Introduccion />
       <section className="d-flex justify-content-center my-5 align-items-center">
         {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (
-          <div>
-            <Link className="btn btn-primary ms-3" to={"/admin"}>
-              Agregar servicios
+          <div className="admin-section-buttons">
+            <Link className="admin-btn" to={"/admin"}>
+              Servicios <span>&#11208;</span>
             </Link>
-            <Link className="btn btn-primary ms-3" to={"/dashboard"}>
-              Ver Turnos
+            <Link className="admin-btn" to={"/dashboard"}>
+              Turnos <span>&#11208;</span>
             </Link>
           </div>
         ) : null}

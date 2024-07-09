@@ -1,9 +1,15 @@
-import React from 'react'
+import RegisterService from "../components/RegisterService";
+import { TurnosAdmin } from "./../components/TurnosAdmin";
+import { UpdateService } from "./../components/UpdateService";
 
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
-  )
-}
+    <>
+      <RegisterService />
+      <UpdateService />
+      <TurnosAdmin />
+    </>
+  );
+};
 
-export default Dashboard
+export default Dashboard;
