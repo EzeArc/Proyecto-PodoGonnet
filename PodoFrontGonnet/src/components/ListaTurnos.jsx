@@ -3,10 +3,8 @@ import ContextoAdministrador from "../context/ContextLoginRegister";
 import TurnoReservado from "./TurnoReservado";
 import "../pages/css/listaTurno.css";
 
-
 const ListaTurnos = () => {
   const { arrayTurnos } = useContext(ContextoAdministrador);
-  console.log(arrayTurnos);
   return (
     <div className="accordion" id="accordionExample">
       <div className="accordion-item">
@@ -28,7 +26,9 @@ const ListaTurnos = () => {
           data-bs-parent="#accordionExample"
         >
           <div className="accordion-body">
-            {arrayTurnos && arrayTurnos.length > 0 && arrayTurnos.some(e => e.estado === true) ? (
+            {arrayTurnos &&
+            arrayTurnos.length > 0 &&
+            arrayTurnos.some((e) => e.estado === true) ? (
               <table className="table align-middle">
                 <thead className="tabla-header">
                   <tr>

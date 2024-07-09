@@ -104,7 +104,7 @@ const RegisterService = () => {
           {" "}
           Ir Inicio
         </Link>
-        <Link className="admin-btn" to={"/admin"}>
+        <Link className="admin-btn" to={"/"}>
           {" "}
           Volver
         </Link>
