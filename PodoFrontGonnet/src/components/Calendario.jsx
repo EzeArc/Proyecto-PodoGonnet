@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import Calendar from "react-calendar";
+import ContextoAdministrador from "../context/ContextLoginRegister";
 import "react-calendar/dist/Calendar.css";
 import "../pages/css/calendario.css";
-import ContextoAdministrador from "../context/ContextLoginRegister";
+import "../pages/css/calendar-time-section.css";
+import "../pages/css/Button-styles.css";
 
 const Calendario = ({ servicioId }) => {
   const [date, setDate] = useState(new Date());
@@ -30,8 +32,6 @@ const Calendario = ({ servicioId }) => {
       }
       const data = await response.json();
       setturno(data);
-      console.log("turnos disponibles");
-      console.log(data);
     } catch (error) {
       console.error("Error fetching appointments", error);
     }
@@ -39,7 +39,6 @@ const Calendario = ({ servicioId }) => {
 
   const bookAppointment = async (turnoId) => {
     const token = localStorage.getItem("auth_token"); // Asume que el token está almacenado en localStorage
-    console.log(usuarioLogeado.id);
     try {
       const response = await fetch(
         `http://localhost:8080/Turnos/reservarTurno/${turnoId}/${servicioId}/${usuarioLogeado.id}`,
@@ -85,10 +84,10 @@ const Calendario = ({ servicioId }) => {
         className="date-container animateanimated animatefadeIn animate__delay-5s"
       >
         <p className="date-text">
-          {app.id}-{new Date(app.startTime).toLocaleTimeString()} -{" "}
-          {new Date(app.endTime).toLocaleTimeString()}
+          {new Date(app.startTime).toLocaleTimeString()}hs -{" "}
+          {new Date(app.endTime).toLocaleTimeString()}hs
           <button
-            className="date-button"
+            className="button-generic-styles"
             onClick={() => bookAppointment(app.id)}
             disabled={app.estado}
           >
@@ -97,36 +96,14 @@ const Calendario = ({ servicioId }) => {
           </button>
         </p>
       </div>
-      /*             <div key={app.id} className=''>
-                            <table className="table table-danger  border-radius-custom">
-                                <thead >
-                                    <tr >
-                                        <th scope="col">Inicio del turno</th>
-                                        <th scope="col">Fin del turno</th>
-                                        <th scope="col"></th>
-                                    </tr>
-                                </thead>
-                                <tbody >
-                                    <tr>
-                                        <td>{new Date(app.startTime).toLocaleTimeString()}</td>
-                                        <td>{new Date(app.endTime).toLocaleTimeString()}</td>
-                                        <td>                {usuarioLogeado.Rol === 'USER' ?
-                                <button className='btnTabla' onClick={() => bookAppointment(app.id)} disabled={app.estado}>
-                                    {app.estado ? 'Reservado' : 'Reservar'}
-                                </button>
-                                : null}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div> */
     ));
   };
 
   return (
-    <div className="d-flex flex-column align-items-center">
+    <main className="calendar-section calendar">
       <Calendar onChange={setDate} value={date} tileClassName={tileClassName} />
-      <div className="mt-1">{renderAppointments()}</div>
-    </div>
+      <div>{renderAppointments()}</div>
+    </main>
   );
 };
 

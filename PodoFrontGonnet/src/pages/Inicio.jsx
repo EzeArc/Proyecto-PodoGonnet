@@ -1,14 +1,12 @@
 import { useContext, useEffect } from "react";
-import "./css/inicio.css";
-import ContextoAdministrador from "../context/ContextLoginRegister";
-import Cards from "../components/Cards";
-
 import { Link } from "react-router-dom";
-
-import ListaTurnos from "../components/ListaTurnos";
-import Introduccion from "../components/Introduccion";
-import Seccion from "../components/Seccion";
+import ContextoAdministrador from "../context/ContextLoginRegister";
 import useTitle from "./../hooks/useTitle";
+import Cards from "../components/Cards";
+import Introduccion from "../components/Introduccion";
+import ListaTurnos from "../components/ListaTurnos";
+import Seccion from "../components/Seccion";
+import "./css/inicio.css";
 
 const Inicio = () => {
   useTitle({ title: "Inicio" });
@@ -18,9 +16,7 @@ const Inicio = () => {
     AuthuTokenYUsiario,
     listaServicios,
     serviciosBack,
-    arrayTurnos,
     listaTurnos,
-    eliminarTurno
   } = useContext(ContextoAdministrador);
 
   useEffect(() => {
@@ -36,30 +32,29 @@ const Inicio = () => {
   3) MANDAR A VALIDAR EL TOKEN SI EXPIRO O NO 
   4) TRAER EL USUARIO SI EL TOKEN NO EXPIRO
   5) RENDERIZAR COMPONENTE CORRESPONDIENTE AL USUARIO LOGEADO
-  
-
   */
 
   return (
-    <div className="row justify-content-center">
+    <>
       <Seccion />
       <Introduccion />
-      {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (
-        <div>
-          <Link className="btn btn-primary ms-3" to={"/admin"}>
-            Agregar servicios
-          </Link>
-          <Link className="btn btn-primary ms-3" to={"/dashboard"}>
-            Ver Turnos
-          </Link>
-        </div>
-      ) : null}
-      {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "USER" ? (
-        <ListaTurnos />
-      ) : null}
+      <section className="d-flex justify-content-center my-5 align-items-center">
+        {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (
+          <div>
+            <Link className="btn btn-primary ms-3" to={"/admin"}>
+              Agregar servicios
+            </Link>
+            <Link className="btn btn-primary ms-3" to={"/dashboard"}>
+              Ver Turnos
+            </Link>
+          </div>
+        ) : null}
+        {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "USER" ? (
+          <ListaTurnos />
+        ) : null}
+      </section>
       <Cards listaServicios={listaServicios} />
-    </div>
+    </>
   );
 };
-
 export default Inicio;
