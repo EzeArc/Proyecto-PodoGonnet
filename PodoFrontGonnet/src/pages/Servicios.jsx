@@ -1,9 +1,10 @@
 import { useEffect, useContext } from "react";
-import ContextoAdministrador from "../context/ContextLoginRegister";
 import { Link, useParams } from "react-router-dom";
-import "../pages/css/servicios.css";
-import Calendario from "../components/Calendario";
+import ContextoAdministrador from "../context/ContextLoginRegister";
 import useTitle from "./../hooks/useTitle";
+import Calendario from "../components/Calendario";
+import "../pages/css/servicios.css";
+
 const Servicios = () => {
   const { servicio, seleccionarServicio, usuarioLogeado, AuthuTokenYUsiario } =
     useContext(ContextoAdministrador);
@@ -11,7 +12,6 @@ const Servicios = () => {
 
   useEffect(() => {
     if (!servicio || servicio.id !== id) {
-      // Esto solo llama seleccionarServicio si el nombre del servicio no coincide con el actual
       seleccionarServicio(id);
       AuthuTokenYUsiario();
     }
@@ -27,27 +27,29 @@ const Servicios = () => {
   const imagenURL = `data:${servicio.imagen.mime};base64,${imagenBase64}`;
   return (
     <>
-      <section className="hero-section1">
-        <div className="hero-container1">
-          <img className="hero-img" src={imagenURL} alt="Spa de pies" />
+      <section className="hero-service-section">
+        <div className="hero-service-container">
+          <img className="hero-service-img" src={imagenURL} alt="Spa de pies" />
           <img
             className="hero-img2"
             src="/src/assets/ImagenesOptimizadas/spa-treatment-product-female-feet-hand-spa_1150-37700.jpg.url"
             alt="Spa de pies"
           />
-          <div className="text-container">
-            <h5 className="hero-title">{servicio.nombre}</h5>
-            <p className="hero-text">{servicio.descripcion}</p>
-            <p className="hero-text-price">
-              Valor del servicio:
-              <small className="price">{servicio.costo}</small>
-            </p>
+          <div className="hero-service-text-container">
+            <h5 className="hero-service-title">{servicio.nombre}</h5>
+            <p className="hero-service-text">{servicio.descripcion}</p>
+            <div className="service-price-section">
+              <p className="hero-service-text-price">
+                Valor del servicio:
+                <small className="service-price">${servicio.costo}</small>
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
       {usuarioLogeado.Auth === false ? (
-        <Link className="hero-button" to={"/login"}>
+        <Link className="hero-service-button" to={"/login"}>
           Contratar
         </Link>
       ) : (

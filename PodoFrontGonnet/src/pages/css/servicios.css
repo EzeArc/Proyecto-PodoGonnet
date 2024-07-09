@@ -1,13 +1,14 @@
 @import "bootstrap";
-.hero-section1 {
+.hero-service-section {
   margin-top: 2rem;
+  height: auto;
   min-height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.hero-container1 {
+.hero-service-container {
   width: 800px;
   display: flex;
   flex-direction: column;
@@ -18,7 +19,7 @@
   border-radius: 16px 16px 0 0;
 }
 
-.hero-img {
+.hero-service-img {
   object-fit: cover;
   object-position: center;
   aspect-ratio: 16 / 9;
@@ -35,53 +36,73 @@
   z-index: -10;
 }
 
-.text-container {
+.hero-service-text-container {
   margin: 1rem;
   font-family: system-ui, -apple-system;
 }
 
-.hero-title {
+.hero-service-title {
+  color: #ff9abf;
   font-size: 2.5rem;
-  font-weight: 700;
-  color: #c05fff;
-  letter-spacing: 0.1rem;
+  font-weight: 800;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
 }
 
-.hero-text {
+.hero-service-text {
+  color: #050505;
   font-weight: 300;
   font-size: 1.3rem;
   line-height: 1.8rem;
-  margin-bottom: 4rem;
-  color: #5c5c5c;
+  margin: 1rem 0;
 }
 
-.hero-text-price {
-  font-size: 1.4rem;
+.service-price-section {
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #ffd3e696;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.hero-service-text-price {
+  color: #050505;
+  font-size: 1.5rem;
   font-weight: 400;
-  color: #333333;
+  margin: auto;
+  padding-left: 0.5rem;
 }
 
-.price {
-  font-weight: 500;
+.service-price {
+  font-weight: 800;
   border-radius: 8px;
   padding: 8px 12px;
-  background-color: #ffc5ff;
+  margin-left: 1rem;
 }
 
-.hero-button {
-  margin: 1.5rem 0;
-  padding: 16px;
-  background-color: #8a2be2;
+.hero-service-button {
+  color: #fff;
+  background-color: #ff9abf;
   border-radius: 10px;
-  font-weight: 500;
-  color: #ffffff;
+  display: block;
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
   transition: background-color 0.3s ease, box-shadow 0.3s ease,
     transform 0.3s ease;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-.hero-button:hover {
-  background-color: #c05fff;
-  box-shadow: 0px 4px 15px rgba(122, 62, 59, 0.5);
-  transform: scale(1.05);
+.hero-service-button:hover {
   color: #ffffff;
+  background-color: #ffd3e6;
+  border: 1px solid #ff9abf;
+  box-shadow: 0px 4px 15px rgba(255, 197, 255, 0.8);
+  font-weight: 800;
+  transform: scale(1.05);
+  text-shadow: 2px 2px 5px #05050593;
 }
