@@ -36,29 +36,32 @@ const Login = () => {
 
   return (
     <main className="d-flex justify-content-center align items-center mt-5">
-      <form id="main">
-        <div id="inset">
-          <p id="code">BIENVENIDO</p>
+      <form className="form-login">
+        <div className="login-border-inset">
+          <p className="login-text-vertical">BIENVENIDO</p>
           <div className="login-input">
             <input
               type="text"
-              placeholder="Email address"
-              id="exampleInputEmail1"
+              placeholder="Nombre de usuario"
+              id="loginUserName"
               name="userName"
               onChange={handleChangelogin}
             />
             <input
               type="password"
-              placeholder="Password"
-              id="exampleInputPassword1"
+              placeholder="Contraseña"
+              id="loginPassword"
               name="password"
               onChange={handleChangelogin}
             />
-            <input
+            <button
+              className="login-button"
               type="submit"
               value="Sign in"
               onClick={(e) => SubmitLogin(e, formlogin)}
-            />
+            >
+              Login
+            </button>
           </div>
         </div>
       </form>
