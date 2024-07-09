@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import Inicio from "../pages/Inicio";
-import AdminPage from "../pages/AdminPage";
 import Login from "../pages/Login";
 import Servicios from "../pages/Servicios";
 import Dashboard from "../pages/Dashboard";
@@ -10,7 +9,7 @@ const AuthenticateRuters = () => {
     <>
       <Routes>
         <Route path="/" element={<Inicio />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin" element={<Dashboard />} />
         {/* <Route path="/servicio" element={<Servicios />} /> */}
         <Route path="/servicio/:id" element={<Servicios />} />
         <Route path="/login" element={<Login />} />

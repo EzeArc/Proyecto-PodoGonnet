@@ -1,0 +1,20 @@
+.tabla-turnos-admin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.accordion-body {
+  gap: 10px;
+}
+
+.admin-turno-btn {
+  margin: 0;
+  margin-left: 0.5rem;
+  padding: 0.5rem;
+}
+
+.icon {
+  color: #050505;
+}
