@@ -25,11 +25,11 @@ public class AdminController {
     private TurnoServicio turnoServicio;
 
     @PostMapping("/crearServicio")
-    public ResponseEntity<ServicioPodo>crearServicioPodo(ServicioPodo servicioPodo,@RequestParam("file") MultipartFile file){
+    public ResponseEntity<ServicioPodo> crearServicioPodo(ServicioPodo servicioPodo, @RequestParam("file") MultipartFile file) {
 
         try {
-            return ResponseEntity.ok(podoServicio.crearServicioPodo(servicioPodo,file));
-        }catch (Exception exception){
+            return ResponseEntity.ok(podoServicio.crearServicioPodo(servicioPodo, file));
+        } catch (Exception exception) {
             exception.printStackTrace();
             System.out.println("hola entro al controlador");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
@@ -39,22 +39,20 @@ public class AdminController {
     }
 
     @GetMapping("/listaTurnoAdmin")
-    public ResponseEntity<List<Turno>> listaTurno(){
+    public ResponseEntity<List<Turno>> listaTurno() {
         return ResponseEntity.ok(turnoServicio.findAll());
     }
 
 
-
-    @PutMapping("/editar/{id}")
-    public void editarServicio(@PathVariable String id){
-try {
-     podoServicio.AltaBaja(id);
-}catch (Exception e){
-    e.getStackTrace();
-}
+    @PutMapping("/AltaBaja/{id}")
+    public void editarTurno(@PathVariable String id) {
+        try {
+            turnoServicio.AltaBaja(id);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
 
     }
-
 
 
 //    @PostMapping("/listaTurnos/{idTurno}/{idServicio}")

@@ -96,6 +96,15 @@ public class TurnoServicio {
     public List<Turno> findAll() {
          return turnoRepository.findAll();
     }
+
+    public void AltaBaja(String id) {
+       Optional<Turno>turnoOptional=turnoRepository.findById(id);
+       if (turnoOptional.isPresent()){
+           Turno turno=turnoOptional.get();
+           turno.setEstado(!turno.isEstado());
+           turnoRepository.save(turno);
+       }
+    }
 }
 
 
