@@ -1,11 +1,15 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import { Route, Routes } from "react-router-dom";
 import PublicRoutes from "./PublicRoutes";
 import AuthRoutes from "./AuthRoutes";
 
 const AppRouters = () => {
-  const { usuarioLogeado } = useContext(ContextoAdministrador);
+  const { usuarioLogeado, AuthuTokenYUsiario, serviciosBack, listaTurnos } = useContext(ContextoAdministrador);
+
+  useEffect(() => {
+    AuthuTokenYUsiario();
+  }, []);
 
   return (
     <Routes>
