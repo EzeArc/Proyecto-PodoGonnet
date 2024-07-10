@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import { Route, Routes } from "react-router-dom";
-import AuthRouters from "./AuthRouters";
-import AuthenticateRuters from "./AuthenticateRuters";
+import PublicRoutes from "./PublicRoutes";
+import AuthRoutes from "./AuthRoutes";
 
 const AppRouters = () => {
   const { usuarioLogeado } = useContext(ContextoAdministrador);
@@ -10,9 +10,9 @@ const AppRouters = () => {
   return (
     <Routes>
       {usuarioLogeado.Auth === false ? (
-        <Route path="/*" element={<AuthRouters />} />
+        <Route path="/*" element={<PublicRoutes />} />
       ) : (
-        <Route path="/*" element={<AuthenticateRuters />} />
+        <Route path="/*" element={<AuthRoutes />} />
       )}
       {/* <Route path='/login' element={<Navigate to='/inicio'/>} /> */}
     </Routes>
