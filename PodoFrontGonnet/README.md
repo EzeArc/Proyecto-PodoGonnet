@@ -1,16 +1,21 @@
 # TAREAS PENDIENTES
 
+> [!IMPORTANT]
+> Modificación
+
 - [ ] Renderizar `<TablaServicios/>`
 - [ ] Arreglar vista `<Admin-Page/>`
 
 # COLOR PALETTE
 
-<span style="color:#fefefe;">&#9899;</span>
-<span style="color:#ff9abf;">&#9899;</span>
-<span style="color:#050505;">&#9899;</span>
-<span style="color:#ffc5ff;">&#9899;</span>
-<span style="color:#FFD3E6;">&#9899;</span>
-<span style="color:#B2FFC8;">&#9899;</span>
+![Screenshot of a color palette, added in the Markdown.](/src/assets/Custom%20Palette.png)
+
+`#fefefe`
+`#ff9abf`
+`#050505`
+`#ffc5ff`
+`#FFD3E6`
+`#B2FFC8`
 
 - Fondo y contenedores: Utiliza el blanco (#fefefe) como fondo principal para toda la página. Los contenedores de secciones, como encabezados, bloques de texto y áreas de contenido, pueden tener este color.
 
