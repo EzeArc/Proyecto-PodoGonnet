@@ -46,6 +46,8 @@ public class HttpSecurityConfig {
                     authRequestConfig.requestMatchers(HttpMethod.POST,"/adminController/crearServicio").hasRole(Rol.ADMIN.name());
                     authRequestConfig.requestMatchers(HttpMethod.GET,"/adminController/listaTurnoAdmin").hasRole(Rol.ADMIN.name());
                     authRequestConfig.requestMatchers(HttpMethod.PUT,"/adminController/AltaBaja/{id}").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.GET,"/adminController/listaServiciosAdmin").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.PUT,"/adminController/AltaBajaServicio/{id}").hasRole(Rol.ADMIN.name());
 
 
 

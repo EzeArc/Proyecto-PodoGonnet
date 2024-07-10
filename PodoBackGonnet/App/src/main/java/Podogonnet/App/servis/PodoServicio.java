@@ -70,6 +70,11 @@ public class PodoServicio {
     }
 
     public void AltaBaja(String id) {
-
+Optional<ServicioPodo>servicioPodoOptional=podoRepository.findById(id);
+if (servicioPodoOptional.isPresent()){
+    ServicioPodo servicioPodo=servicioPodoOptional.get();
+    servicioPodo.setEstado(!servicioPodo.isEstado());
+    podoRepository.save(servicioPodo);
+}
     }
 }
