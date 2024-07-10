@@ -41,12 +41,14 @@ public class HttpSecurityConfig {
                 .addFilterAfter(jwtAutheticateFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authRequestConfig -> {
 
-                    /*por que asi anda*/
-                    authRequestConfig.requestMatchers(HttpMethod.GET,"/api/v1/user").hasRole(Rol.ADMIN.name());
-                    authRequestConfig.requestMatchers(HttpMethod.POST,"/adminController/crearServicio").hasRole(Rol.ADMIN.name());
-                    authRequestConfig.requestMatchers(HttpMethod.GET,"/adminController/listaTurnoAdmin").hasRole(Rol.ADMIN.name());
-                    authRequestConfig.requestMatchers(HttpMethod.PUT,"/adminController/AltaBaja/{id}").hasRole(Rol.ADMIN.name());
-
+                    /* por que asi anda */
+                    authRequestConfig.requestMatchers(HttpMethod.GET, "/api/v1/user").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.POST, "/adminController/crearServicio")
+                            .hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.GET, "/adminController/listaTurnoAdmin")
+                            .hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.PUT, "/adminController/AltaBaja/{id}")
+                            .hasRole(Rol.ADMIN.name());
 
                     /* PERO ASI NO! LPM */
                     /* Usuario linea 44 ahi tenes que configurar exe */
@@ -68,7 +70,7 @@ public class HttpSecurityConfig {
                     authRequestConfig.requestMatchers(HttpMethod.GET, "/api/v1/servicios").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.GET, "/portal/listaSerivicios").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.GET, "/portal/servicioPodo/{id}").permitAll();
-                    authRequestConfig.requestMatchers(HttpMethod.GET, "/adminController/listaTurnoAdmin").permitAll();
+
                     // esta seria para admin,poner!
                     authRequestConfig
                             .requestMatchers(HttpMethod.POST, "/adminController/listaTurnos/{idTurno}/{idServicio}")
