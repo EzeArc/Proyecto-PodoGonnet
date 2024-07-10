@@ -8,7 +8,7 @@
 
 # COLOR PALETTE
 
-![Screenshot of a color palette, added in the Markdown.](/src/assets/custom-Palette.png)
+![Screenshot of a color palette, added in the Markdown.](https://github.com/EzeArc/Proyecto-PodoGonnet/blob/main/PodoFrontGonnet/src/assets/color-palette-podologia.png)
 
 `#fefefe`
 `#ff9abf`
