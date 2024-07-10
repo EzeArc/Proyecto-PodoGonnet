@@ -8,7 +8,7 @@
 
 # COLOR PALETTE
 
-![Screenshot of a color palette, added in the Markdown.](/src/assets/Custom%20Palette.png)
+![Screenshot of a color palette, added in the Markdown.](/src/assets/custom-Palette.png)
 
 `#fefefe`
 `#ff9abf`
