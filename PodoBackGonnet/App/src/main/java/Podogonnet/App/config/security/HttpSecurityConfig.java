@@ -1,6 +1,5 @@
 package Podogonnet.App.config.security;
 
-
 import Podogonnet.App.config.security.filter.JwtAutheticateFilter;
 import Podogonnet.App.enums.Rol;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +35,12 @@ public class HttpSecurityConfig {
         SecurityFilterChain filterChain = http
                 .cors(Customizer.withDefaults())
                 .csrf(csrfConfig -> csrfConfig.disable())
-                .sessionManagement(sessionMagConfigCon -> sessionMagConfigCon.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(sessionMagConfigCon -> sessionMagConfigCon
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(daoAuthenticationProvider)
                 .addFilterAfter(jwtAutheticateFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authRequestConfig -> {
+
 
                     /*por que asi anda*/
                     authRequestConfig.requestMatchers(HttpMethod.GET,"/api/v1/user").hasRole(Rol.ADMIN.name());
@@ -63,20 +64,24 @@ public class HttpSecurityConfig {
 
 
                     /*EndPoint Publicos*/
+
                     authRequestConfig.requestMatchers(HttpMethod.POST, "/api/v1/register").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.POST, "/api/v1/auth/authenticate").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.GET, "/api/v1/auth/validate").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.GET, "/api/v1/servicios").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.GET, "/portal/listaSerivicios").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.GET, "/portal/servicioPodo/{id}").permitAll();
-                    //esta seria para admin,poner!
-                    authRequestConfig.requestMatchers(HttpMethod.POST,"/adminController/listaTurnos/{idTurno}/{idServicio}").permitAll();
-                    authRequestConfig.anyRequest().authenticated();
 
+                    // esta seria para admin,poner!
+                    authRequestConfig
+                            .requestMatchers(HttpMethod.POST, "/adminController/listaTurnos/{idTurno}/{idServicio}")
+                            .permitAll();
+                    authRequestConfig.anyRequest().authenticated();
 
                 }).build();
         return filterChain;
     }
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
