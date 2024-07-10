@@ -1,9 +1,11 @@
 import { useContext, useEffect } from "react";
+import { format } from "date-fns";
+
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import "../pages/css/Tabla-Turnos-Admin.css";
 
 export const TurnosAdmin = () => {
-  const { arrayTurnosAdmin, listaTurnosAdmin } = useContext(
+  const { arrayTurnosAdmin, listaTurnosAdmin, eliminarTurnoAdmin } = useContext(
     ContextoAdministrador
   );
 
@@ -43,19 +45,31 @@ export const TurnosAdmin = () => {
                       <th scope="col">Nombre del servicio</th>
                       <th scope="col">Hora del turno</th>
                       <th scope="col">Costo</th>
+                      <th scope="col">Estado del turno</th>
                       <th scope="col">Modificar</th>
                       <th scope="col">Cancelar</th>
-                      <th scope="col">Eliminar</th>
                     </tr>
                   </thead>
-                  {arrayTurnosAdmin.map((e) =>
-                    e.estado === true ? (
-                      <tbody key={e.id}>
+                  {arrayTurnosAdmin.map((turno) =>
+                    turno.estado === true ? (
+                      <tbody key={turno.id}>
                         <tr>
-                          <td>Cliente</td>
-                          <td>Servicio</td>
-                          <td>Fecha</td>
-                          <td>Costo</td>
+                          <td>{turno.usuario.nombre}</td>
+                          <td>{turno.id}</td>
+                          <td>
+                            {format(
+                              new Date(turno.startTime),
+                              "hh:mm a dd/MM/yyyy"
+                            )}
+                          </td>
+                          <td>{turno.servicioPodo.costo}</td>
+                          <td>
+                            {turno.estado === true ? (
+                              <span>Confirmado</span>
+                            ) : (
+                              <span>Cancelado</span>
+                            )}
+                          </td>
                           <td>
                             <button
                               className="tabla-turno-btn admin-turno-btn"
@@ -73,23 +87,9 @@ export const TurnosAdmin = () => {
                           <td>
                             <button
                               className="tabla-turno-btn admin-turno-btn"
-                              // onClick={(e) => {
-                              //   eliminarTurno(e, listaTurnos.id);
-                              // }}
-                            >
-                              <img
-                                className="admin-icons"
-                                src="/src/assets/ImagenesOptimizadas/icons/calendar-cancel.svg"
-                                alt="Cancelar Turno"
-                              />
-                            </button>
-                          </td>
-                          <td>
-                            <button
-                              className="tabla-turno-btn admin-turno-btn"
-                              // onClick={(e) => {
-                              //   eliminarTurno(e, listaTurnos.id);
-                              // }}
+                              onClick={(e) => {
+                                eliminarTurnoAdmin(e, turno.id);
+                              }}
                             >
                               <img
                                 className="admin-icons"

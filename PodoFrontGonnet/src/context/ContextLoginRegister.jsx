@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-
-import { get, getToken, post, postImagen } from "../utils/http";
 import { Await } from "react-router-dom";
+
+import { get, getToken, post, postImagen, put } from "../utils/http";
 
 // http://localhost:8080/api/v1/auth/authenticate
 //url para hacer login
@@ -15,6 +15,8 @@ const urlBackListaTurno = "http://localhost:8080/Turnos/listaTurnos/";
 const urlBackCancelarTurno = "http://localhost:8080/Turnos/cancelarTurno/";
 const urlBackListaTurnosAdmin =
   "http://localhost:8080/adminController/listaTurnoAdmin";
+const urlBackCancelarTurnoAdmin =
+  "http://localhost:8080/adminController/AltaBaja/";
 
 //creo los usuarios para recibir la data del back
 const usuarioLogin = {
@@ -171,6 +173,19 @@ const ContextLoginRegister = ({ children }) => {
     }
   };
 
+  const eliminarTurnoAdmin = async (e, turnoId) => {
+    try {
+      e.preventDefault();
+      let jwt = window.localStorage.getItem("auth_token");
+      const urlCancelarTurno = urlBackCancelarTurnoAdmin + turnoId;
+      const respuesta = await put(urlCancelarTurno, jwt);
+      console.log(respuesta.ok);
+      listaTurnosAdmin();
+    } catch (error) {
+      console.log("error ");
+    }
+  };
+
   const logOut = () => {
     window.localStorage.removeItem("auth_token");
     window.location.href = "/login";
@@ -192,6 +207,7 @@ const ContextLoginRegister = ({ children }) => {
     eliminarTurno,
     arrayTurnosAdmin,
     listaTurnosAdmin,
+    eliminarTurnoAdmin,
     logOut,
   };
   return (
