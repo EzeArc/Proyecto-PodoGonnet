@@ -1,22 +1,20 @@
-import RegisterService from "../components/RegisterService";
-import { TurnosAdmin } from "./../components/TurnosAdmin";
-import { UpdateService } from "./../components/UpdateService";
-//import { useEffect } from "react";
 import { useContext, useEffect } from "react";
 import ContextoAdministrador from "./../context/ContextLoginRegister";
-import ListaTurnos from "../components/ListaTurnos";
+import { TurnosAdmin } from "./../components/TurnosAdmin";
+import { ServiceTable } from "./../components/ServiceTable";
+import { RegisterService } from "../components/RegisterService";
 
 const Dashboard = () => {
-  const { usuarioLogeado, listaTurnosAdmin, arrayTurnosAdmin } = useContext(ContextoAdministrador);
-  useEffect(() => {
-
-  }, [arrayTurnosAdmin]);
+  const { usuarioLogeado, arrayTurnosAdmin } = useContext(
+    ContextoAdministrador
+  );
+  useEffect(() => {}, [arrayTurnosAdmin]);
   return (
     <>
       {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (
         <>
           <RegisterService />
-          <UpdateService />
+          <ServiceTable />
           <TurnosAdmin />
         </>
       ) : (
