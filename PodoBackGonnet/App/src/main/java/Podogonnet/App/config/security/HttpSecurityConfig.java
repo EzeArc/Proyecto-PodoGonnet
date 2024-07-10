@@ -44,6 +44,9 @@ public class HttpSecurityConfig {
                     /*por que asi anda*/
                     authRequestConfig.requestMatchers(HttpMethod.GET,"/api/v1/user").hasRole(Rol.ADMIN.name());
                     authRequestConfig.requestMatchers(HttpMethod.POST,"/adminController/crearServicio").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.POST,"/adminController/listaTurnoAdmin").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.POST,"/adminController/AltaBaja/{id}").hasRole(Rol.ADMIN.name());
+
 
 
                                                             /* PERO ASI NO!  LPM */
