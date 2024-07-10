@@ -86,8 +86,8 @@ export const postImagen = async (url, servicioPodo, token) => {
     if (!respuesta.ok) {
       throw new Error(
         respuesta.status +
-          " error en fetch [post hhtp]: " +
-          respuesta.statusText
+        " error en fetch [post hhtp]: " +
+        respuesta.statusText
       );
     }
 
@@ -100,25 +100,23 @@ export const postImagen = async (url, servicioPodo, token) => {
 };
 
 export const put = async (url, token) => {
-  const fechConfig = {
+  const fetchConfig = {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   };
-  try {
-    const respuesta = await fetch(url, fechConfig);
 
-    if (!respuesta.ok) {
+  try {
+    const response = await fetch(url, fetchConfig);
+
+    if (!response.ok) {
       throw new Error(
-        respuesta.status + "error en fecth [PUT hhtp]" + respuesta.statusText
+        `${response.status} error en fetch [PUT HTTP]: ${response.statusText}`
       );
     }
-    const datos = await respuesta.json();
-
-    return datos;
   } catch (error) {
-    console.log(`error cath de get [PUT HTTPS]${error}`);
+    console.log(`Error catch de put [PUT HTTPS]: ${error}`);
   }
 };

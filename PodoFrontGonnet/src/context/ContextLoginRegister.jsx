@@ -178,14 +178,6 @@ const ContextLoginRegister = ({ children }) => {
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarTurno = urlBackCancelarTurnoAdmin + turnoId;
       const respuesta = await put(urlCancelarTurno, jwt);
-      console.log(respuesta.ok);
-
-      // Actualiza el estado localmente antes de hacer la solicitud para tener una referencia nueva
-      setArrayTurnosAdmin((prevState) =>
-        prevState.map((turno) =>
-          turno.id === turnoId ? { ...turno, estado: false } : turno
-        )
-      );
       listaTurnosAdmin();
     } catch (error) {
       console.log("error ");

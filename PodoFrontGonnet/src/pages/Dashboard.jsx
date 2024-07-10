@@ -2,16 +2,15 @@ import RegisterService from "../components/RegisterService";
 import { TurnosAdmin } from "./../components/TurnosAdmin";
 import { UpdateService } from "./../components/UpdateService";
 //import { useEffect } from "react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ContextoAdministrador from "./../context/ContextLoginRegister";
+import ListaTurnos from "../components/ListaTurnos";
 
 const Dashboard = () => {
-  const { usuarioLogeado } = useContext(ContextoAdministrador);
+  const { usuarioLogeado, listaTurnosAdmin, arrayTurnosAdmin } = useContext(ContextoAdministrador);
+  useEffect(() => {
 
-  // useEffect(() => {
-  //   AuthuTokenYUsiario();
-  // }, []);
-
+  }, [arrayTurnosAdmin]);
   return (
     <>
       {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (

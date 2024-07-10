@@ -8,10 +8,11 @@ export const TurnosAdmin = () => {
   const { arrayTurnosAdmin, listaTurnosAdmin, eliminarTurnoAdmin } = useContext(
     ContextoAdministrador
   );
-
   useEffect(() => {
-    listaTurnosAdmin();
-  }, []);
+    listaTurnosAdmin()
+  }, [])
+
+
 
   return (
     <section className="tabla-turnos-admin">
@@ -36,8 +37,8 @@ export const TurnosAdmin = () => {
           >
             <div className="accordion-body">
               {arrayTurnosAdmin &&
-              arrayTurnosAdmin.length > 0 &&
-              arrayTurnosAdmin.some((e) => e.estado === true) ? (
+                arrayTurnosAdmin.length > 0 &&
+                arrayTurnosAdmin.some((e) => e.estado === true) ? (
                 <table className="table align-middle">
                   <thead className="tabla-header">
                     <tr>
@@ -73,9 +74,9 @@ export const TurnosAdmin = () => {
                           <td>
                             <button
                               className="tabla-turno-btn admin-turno-btn"
-                              // onClick={(e) => {
-                              //   eliminarTurno(e, listaTurnos.id);
-                              // }}
+                            // onClick={(e) => {
+                            //   eliminarTurno(e, listaTurnos.id);
+                            // }}
                             >
                               <img
                                 className="admin-icons"
