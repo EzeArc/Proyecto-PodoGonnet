@@ -54,12 +54,19 @@ public class AdminController {
 
     }
 
+@GetMapping("/listaServiciosAdmin")
+    public ResponseEntity<List<ServicioPodo>>ListaServicios(){
+    try {
+        return ResponseEntity.ok(podoServicio.findAll());
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+    }
+    }
 
-//    @PostMapping("/listaTurnos/{idTurno}/{idServicio}")
-//    public ResponseEntity<Turno> bookAppointment(@PathVariable String idTurno, @PathVariable String idServicio) {
-//
-//        return ResponseEntity.ok();
-//    }
+    @PutMapping("AltaBajaServicio/{id}")
+    public void AltaBajaServicio(@PathVariable String id){
+        podoServicio.AltaBaja(id);
+    }
 
 
 }

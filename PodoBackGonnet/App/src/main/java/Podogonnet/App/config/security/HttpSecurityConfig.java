@@ -41,29 +41,30 @@ public class HttpSecurityConfig {
                 .addFilterAfter(jwtAutheticateFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authRequestConfig -> {
 
-                    /* por que asi anda */
-                    authRequestConfig.requestMatchers(HttpMethod.GET, "/api/v1/user").hasRole(Rol.ADMIN.name());
-                    authRequestConfig.requestMatchers(HttpMethod.POST, "/adminController/crearServicio")
-                            .hasRole(Rol.ADMIN.name());
-                    authRequestConfig.requestMatchers(HttpMethod.GET, "/adminController/listaTurnoAdmin")
-                            .hasRole(Rol.ADMIN.name());
-                    authRequestConfig.requestMatchers(HttpMethod.PUT, "/adminController/AltaBaja/{id}")
-                            .hasRole(Rol.ADMIN.name());
 
-                    /* PERO ASI NO! LPM */
-                    /* Usuario linea 44 ahi tenes que configurar exe */
-                    /*
-                     * authRequestConfig.requestMatchers(HttpMethod.GET,"/api/v1/user").hasRol(Rol.
-                     * ADMIN.name());
-                     */
+                    /*por que asi anda*/
+                    authRequestConfig.requestMatchers(HttpMethod.GET,"/api/v1/user").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.POST,"/adminController/crearServicio").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.GET,"/adminController/listaTurnoAdmin").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.PUT,"/adminController/AltaBaja/{id}").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.GET,"/adminController/listaServiciosAdmin").hasRole(Rol.ADMIN.name());
+                    authRequestConfig.requestMatchers(HttpMethod.PUT,"/adminController/AltaBajaServicio/{id}").hasRole(Rol.ADMIN.name());
 
-                    /*
-                     * EJEMPLO DE EXPRESION REGULAR
-                     * authRequestConfig.requestMatchers(RegexRequestMatcher.regexMatcher(HttpMethod
-                     * .GET,"/api/v1/user/[0-9]*"));
-                     */
 
-                    /* EndPoint Publicos */
+
+                                                            /* PERO ASI NO!  LPM */
+                    /*Usuario linea 44 ahi tenes que configurar exe */
+                    /*  authRequestConfig.requestMatchers(HttpMethod.GET,"/api/v1/user").hasRol(Rol.ADMIN.name());*/
+
+                    /*EJEMPLO DE EXPRESION REGULAR
+                    * authRequestConfig.requestMatchers(RegexRequestMatcher.regexMatcher(HttpMethod.GET,"/api/v1/user/[0-9]*"));
+                    * */
+
+
+
+
+                    /*EndPoint Publicos*/
+
                     authRequestConfig.requestMatchers(HttpMethod.POST, "/api/v1/register").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.POST, "/api/v1/auth/authenticate").permitAll();
                     authRequestConfig.requestMatchers(HttpMethod.GET, "/api/v1/auth/validate").permitAll();
