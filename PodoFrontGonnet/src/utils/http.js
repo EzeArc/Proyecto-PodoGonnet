@@ -16,7 +16,6 @@ export const get = async (url) => {
 };
 
 // get con token
-// get con token
 export const getToken = async (url, token) => {
   try {
     const fetchConfig = {
@@ -34,7 +33,6 @@ export const getToken = async (url, token) => {
       );
     }
     const data = await respuesta.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(`error catch de get ${error}`);
@@ -94,7 +92,6 @@ export const postImagen = async (url, servicioPodo, token) => {
     }
 
     const datos = await respuesta.json();
-    console.log(datos);
 
     return datos;
   } catch (error) {

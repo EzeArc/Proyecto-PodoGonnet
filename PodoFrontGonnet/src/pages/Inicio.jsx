@@ -25,8 +25,8 @@ const Inicio = () => {
     listaTurnos();
   }, []);
 
-  //AuthuTokenYUsiario()
   /* 
+  --> AuthuTokenYUsiario()
   1) BUSCAR SI HAY TOKEN EN LOCALSTRORAGE
   2) TRAER EL LOCAL SI HAY
   3) MANDAR A VALIDAR EL TOKEN SI EXPIRO O NO 

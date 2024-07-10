@@ -95,7 +95,6 @@ const ContextLoginRegister = ({ children }) => {
       };
 
       setUsuarioLogeado(usuarioRespuesta);
-      // cambianr en el  backend para que en vez de devolver un true o false,devuelva el objeto
     }
   };
 
@@ -180,6 +179,13 @@ const ContextLoginRegister = ({ children }) => {
       const urlCancelarTurno = urlBackCancelarTurnoAdmin + turnoId;
       const respuesta = await put(urlCancelarTurno, jwt);
       console.log(respuesta.ok);
+
+      // Actualiza el estado localmente antes de hacer la solicitud para tener una referencia nueva
+      setArrayTurnosAdmin((prevState) =>
+        prevState.map((turno) =>
+          turno.id === turnoId ? { ...turno, estado: false } : turno
+        )
+      );
       listaTurnosAdmin();
     } catch (error) {
       console.log("error ");
