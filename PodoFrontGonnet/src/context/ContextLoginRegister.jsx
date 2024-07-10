@@ -13,6 +13,9 @@ const urlListaServicios = "http://localhost:8080/portal/listaSerivicios";
 const urlServicioGet = "http://localhost:8080/portal/servicioPodo/";
 const urlBackListaTurno = "http://localhost:8080/Turnos/listaTurnos/";
 const urlBackCancelarTurno = "http://localhost:8080/Turnos/cancelarTurno/";
+const urlBackListaTurnosAdmin =
+  "http://localhost:8080/adminController/listaTurnoAdmin";
+
 //creo los usuarios para recibir la data del back
 const usuarioLogin = {
   id: "",
@@ -30,6 +33,7 @@ const ContextLoginRegister = ({ children }) => {
   const [listaServicios, setlistaServicios] = useState([]);
   const [servicio, setServicio] = useState(null);
   const [arrayTurnos, setarrayTurnos] = useState([]);
+  const [arrayTurnosAdmin, setArrayTurnosAdmin] = useState([]);
 
   const SubmitRegistro = async (e, formRegistro) => {
     e.preventDefault();
@@ -138,7 +142,6 @@ const ContextLoginRegister = ({ children }) => {
       let jwt = window.localStorage.getItem("auth_token");
       const respuesta = await getToken(urlback, jwt);
       setarrayTurnos(respuesta);
-
     } catch (error) {
       console.log("error 171");
     }
@@ -155,6 +158,19 @@ const ContextLoginRegister = ({ children }) => {
       console.log("error ");
     }
   };
+
+  const listaTurnosAdmin = async () => {
+    try {
+      const urlback = urlBackListaTurnosAdmin;
+
+      let jwt = window.localStorage.getItem("auth_token");
+      const respuesta = await getToken(urlback, jwt);
+      setArrayTurnosAdmin(respuesta);
+    } catch (error) {
+      console.log("Error al traer los turnos del Administrador");
+    }
+  };
+
   const logOut = () => {
     window.localStorage.removeItem("auth_token");
     window.location.href = "/login";
@@ -174,6 +190,8 @@ const ContextLoginRegister = ({ children }) => {
     arrayTurnos,
     listaTurnos,
     eliminarTurno,
+    arrayTurnosAdmin,
+    listaTurnosAdmin,
     logOut,
   };
   return (
