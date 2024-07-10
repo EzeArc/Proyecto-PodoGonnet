@@ -12,7 +12,6 @@ const AuthRouters = () => {
         <Route path="/" element={<Inicio />} />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Register />} />
-        <Route path="/admin" element={<Dashboard />} />
         {/* <Route path="/servicio" element={<Servicios />} /> */}
         <Route path="/servicio/:id" element={<Servicios />} />
       </Routes>
