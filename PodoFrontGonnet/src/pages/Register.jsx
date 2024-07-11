@@ -38,6 +38,7 @@ const Register = () => {
               placeholder="Nombre de usuario"
               id="registerUserName"
               name="userName"
+              className="registro-text-input"
               onChange={handleChange}
             />
             <input
@@ -45,6 +46,7 @@ const Register = () => {
               placeholder="Nombre"
               id="registerName"
               name="name"
+              className="registro-text-input"
               onChange={handleChange}
             />
             <input
@@ -52,20 +54,23 @@ const Register = () => {
               placeholder="Email"
               id="registerEmail"
               name="email"
+              className="registro-text-input"
               onChange={handleChange}
             />
             <input
-              type="text"
+              type="password"
               placeholder="Contraseña"
               id="registerPassword"
               name="password"
+              className="registro-password-input"
               onChange={handleChange}
             />
             <input
-              type="text"
+              type="password"
               placeholder="repetir contraseña"
               id="registerPassword"
               name="repeatePassword"
+              className="registro-password-input"
               onChange={handleChange}
             />
             <div className="register-buttons">

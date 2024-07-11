@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import ContextoAdministrador from "./../context/ContextLoginRegister";
 import "../pages/css/Tablas-Admin.css";
 
-export const ServiceTable = () => {
+export const ServiceTable = ({ onSeleccionarServicio }) => {
   const { eliminarServicioAdmin, listaServicios, listaServiciosAdmin } =
     useContext(ContextoAdministrador);
 
@@ -49,7 +49,7 @@ export const ServiceTable = () => {
                         Costo
                       </th>
                       <th scope="col" className="m-auto text-center">
-                        Estado del turno
+                        Estado del servicio
                       </th>
                       <th scope="col" className="m-auto text-center">
                         Modificar
@@ -90,9 +90,9 @@ export const ServiceTable = () => {
                         <td className="m-auto">
                           <button
                             className="tabla-admin-btn admin-btn"
-                            // onClick={(e) => {
-                            //   eliminarservicio(e, listaservicios.id);
-                            // }}
+                            onClick={() => {
+                              onSeleccionarServicio(servicio);
+                            }}
                           >
                             <img
                               className="admin-icons"
