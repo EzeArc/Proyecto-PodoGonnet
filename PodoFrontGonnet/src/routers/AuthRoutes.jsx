@@ -16,7 +16,7 @@ const AuthRoutes = () => {
         <Route path="/servicio/:id" element={<Servicios />} />
         <Route path="/login" element={<Login />} />
         {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (
-          <Route path="/admin" element={<Dashboard />} />
+          <Route path="/admin/:section" element={<Dashboard />} />
         ) : (
           <Route path="/login" element={<Login />} />
         )}

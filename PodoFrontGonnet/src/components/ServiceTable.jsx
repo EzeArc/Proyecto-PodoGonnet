@@ -88,7 +88,8 @@ export const ServiceTable = ({ onSeleccionarServicio }) => {
                           )}
                         </td>
                         <td className="m-auto">
-                          <button
+                          <a
+                            href="#target-div"
                             className="tabla-admin-btn admin-btn"
                             onClick={() => {
                               onSeleccionarServicio(servicio);
@@ -99,7 +100,7 @@ export const ServiceTable = ({ onSeleccionarServicio }) => {
                               src="/src/assets/ImagenesOptimizadas/icons/calendar-cog.svg"
                               alt="Modificar servicio"
                             />
-                          </button>
+                          </a>
                         </td>
                         <td className="m-auto">
                           <button

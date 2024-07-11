@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -76,5 +77,22 @@ if (servicioPodoOptional.isPresent()){
     servicioPodo.setEstado(!servicioPodo.isEstado());
     podoRepository.save(servicioPodo);
 }
+    }
+
+    public void modificarServicio(ServicioPodo servicioPodo, MultipartFile file) throws IOException {
+       Optional<ServicioPodo>servicio=podoRepository.findById(servicioPodo.getId());
+       Imagen imagen=imagenServicio.crearImagen(file);
+       if (servicio.isPresent()){
+           ServicioPodo servicioModifar=servicio.get();
+           servicioModifar.setNombre(servicioPodo.getNombre());
+           servicioModifar.setCosto(servicioPodo.getCosto());
+           servicioModifar.setDescripcion(servicioPodo.getDescripcion());
+           servicioModifar.setImagen(imagen);
+           servicioModifar.setEstado(servicioModifar.isEstado());
+           podoRepository.save(servicioModifar);
+           System.out.println("todo bien|||||||||||||||||||||||||||||||||||||||||");
+           System.out.println(servicioModifar);
+
+       }
     }
 }

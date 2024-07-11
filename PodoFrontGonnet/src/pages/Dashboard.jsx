@@ -4,8 +4,11 @@ import { TurnosAdmin } from "./../components/TurnosAdmin";
 import { ServiceTable } from "./../components/ServiceTable";
 import { RegisterService } from "../components/RegisterService";
 import { AdminCardEdit } from "../components/AdminCardEdit";
+import { useParams } from "react-router-dom";
 
 const Dashboard = () => {
+  const { section } = useParams();
+
   const { usuarioLogeado, arrayTurnosAdmin } = useContext(
     ContextoAdministrador
   );
@@ -16,17 +19,25 @@ const Dashboard = () => {
     setServicioSeleccionado(servicio);
   };
 
-  useEffect(() => {}, [arrayTurnosAdmin]);
+  useEffect(() => { }, [arrayTurnosAdmin]);
   return (
     <>
       {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (
+        /* 
+         <div>
+      {section === 'turnos' && <Turnos />}
+      {section === 'servicios' && <Servicios />}
+    </div>
+     */
+
         <>
-          <RegisterService />
-          <TurnosAdmin />
-          <ServiceTable onSeleccionarServicio={handleSeleccionarServicio} />
-          {servicioSeleccionado && (
-            <AdminCardEdit servicio={servicioSeleccionado} />
-          )}
+          {section === 'turnos' && <TurnosAdmin />}
+          {section === "servicios" && <> <RegisterService />
+            <ServiceTable onSeleccionarServicio={handleSeleccionarServicio} />
+            {servicioSeleccionado && (
+              <AdminCardEdit servicio={servicioSeleccionado} />
+            )}
+          </>}
         </>
       ) : (
         <p>Se cerro tu sección</p>

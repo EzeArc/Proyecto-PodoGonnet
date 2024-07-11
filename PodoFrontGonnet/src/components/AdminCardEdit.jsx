@@ -30,6 +30,7 @@ export const AdminCardEdit = ({ servicio }) => {
       ...form,
       [e.target.name]: e.target.value,
     });
+
   };
 
   const handleImageChange = (e) => {
@@ -47,6 +48,7 @@ export const AdminCardEdit = ({ servicio }) => {
     if (file) {
       reader.readAsDataURL(file);
     }
+
   };
 
   const submitModificarServicio = async (e, form) => {
@@ -57,18 +59,18 @@ export const AdminCardEdit = ({ servicio }) => {
     formData.append("nombre", form.nombre);
     formData.append("descripcion", form.descripcion);
     formData.append("costo", form.costo);
-    if (form.file) {
-      formData.append("imagen", form.file);
-    }
-
+    formData.append("file", form.file);
     try {
-      const response = await fetch("/api/servicios", {
-        method: "POST",
+      let token = localStorage.getItem("auth_token")
+      const response = await fetch("http://localhost:8080/adminController/ModificarServicio", {
+        method: "PUT", headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: formData,
       });
+      console.log(response)
       if (response.ok) {
-        const data = await response.json();
-        console.log("Servicio modificado con éxito:", data);
+        console.log("Servicio modificado con éxito:");
       } else {
         console.error("Error al modificar el servicio");
       }
@@ -78,7 +80,7 @@ export const AdminCardEdit = ({ servicio }) => {
   };
 
   return (
-    <section className="card-edit-section">
+    <section className="card-edit-section" id="target-div">
       <h2 className="admin-title">
         Editando <span className="admin-userName">{servicio.nombre}</span>
       </h2>
@@ -93,6 +95,7 @@ export const AdminCardEdit = ({ servicio }) => {
             Cambiar imagen
             <input
               type="file"
+              name="file"
               className="service-file-update"
               onChange={handleImageChange}
             />

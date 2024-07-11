@@ -54,19 +54,27 @@ public class AdminController {
 
     }
 
-@GetMapping("/listaServiciosAdmin")
-    public ResponseEntity<List<ServicioPodo>>ListaServicios(){
-    try {
-        return ResponseEntity.ok(podoServicio.findAll());
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-    }
+    @GetMapping("/listaServiciosAdmin")
+    public ResponseEntity<List<ServicioPodo>> ListaServicios() {
+        try {
+            return ResponseEntity.ok(podoServicio.findAll());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @PutMapping("AltaBajaServicio/{id}")
-    public void AltaBajaServicio(@PathVariable String id){
+    public void AltaBajaServicio(@PathVariable String id) {
         podoServicio.AltaBaja(id);
     }
 
+    @PutMapping("/ModificarServicio")
+    public void modificarServicio( ServicioPodo servicioPodo, @RequestParam("file") MultipartFile file) {
+        try {
+            podoServicio.modificarServicio(servicioPodo, file);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+    }
 
 }

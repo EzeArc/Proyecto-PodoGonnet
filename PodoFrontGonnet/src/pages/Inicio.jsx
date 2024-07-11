@@ -41,10 +41,10 @@ const Inicio = () => {
       <section className="d-flex justify-content-center my-5 align-items-center">
         {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (
           <div className="admin-section-buttons">
-            <Link className="admin-btn" to={"/admin"}>
+            <Link className="admin-btn" to={"/admin/servicios"}>
               Servicios <span>&#11208;</span>
             </Link>
-            <Link className="admin-btn" to={"/dashboard"}>
+            <Link className="admin-btn" to={"/admin/turnos"}>
               Turnos <span>&#11208;</span>
             </Link>
           </div>
