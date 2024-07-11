@@ -51,14 +51,16 @@
   font-family: system-ui, -apple-system;
 }
 
-.article-title {
+.article-title,
+.article-text-container .article-title {
   font-size: 2rem;
   font-weight: 800;
   color: #ff9abf;
   letter-spacing: 0.2rem;
 }
 
-.article-text1 {
+.article-text1,
+.article-text-container .article-text1 {
   font-weight: 300;
   font-size: 1.2rem;
   line-height: 1.8rem;
@@ -66,7 +68,8 @@
   color: #050505;
 }
 
-.article-text-price {
+.article-text-price,
+.article-text-container .article-text-price {
   font-size: 1.3rem;
   font-weight: 400;
   color: #050505;
