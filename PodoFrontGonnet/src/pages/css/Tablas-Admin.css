@@ -1,3 +1,10 @@
+.accordion {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  max-width: 80dvw;
+  max-width: 80vw;
+}
+
 .tabla-admin {
   display: flex;
   justify-content: center;
@@ -84,4 +91,11 @@
   color: #050505;
   font-weight: 600;
   font-size: 1.2rem;
+}
+
+.service-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }

@@ -31,9 +31,9 @@ export const ServiceTable = () => {
             className="accordion-collapse collapse show"
             data-bs-parent="#accordionExample"
           >
-            <div className="accordion-body tabla-admin-body">
+            <div className="accordion-body tabla-admin-body table-responsive">
               {listaServicios && listaServicios.length > 0 ? (
-                <table className="table align-middle">
+                <table className="table align-middle table-borderless ">
                   <thead className="tabla-header">
                     <tr>
                       <th scope="col" className="m-auto text-center">
@@ -60,7 +60,7 @@ export const ServiceTable = () => {
                     </tr>
                   </thead>
                   {listaServicios.map((servicio) => (
-                    <tbody key={servicio.id}>
+                    <tbody key={servicio.id} className="table-group-divider">
                       <tr>
                         <td className="m-auto">
                           <img
@@ -74,7 +74,9 @@ export const ServiceTable = () => {
                         <td className="m-auto p-4 service-name">
                           {servicio.nombre}
                         </td>
-                        <td className="m-auto p-4">{servicio.descripcion}</td>
+                        <td className="m-auto p-4 service-description">
+                          {servicio.descripcion}
+                        </td>
                         <td className="m-auto p-4 service-price">
                           ${servicio.costo}
                         </td>
