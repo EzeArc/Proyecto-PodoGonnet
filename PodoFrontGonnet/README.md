@@ -1,4 +1,21 @@
+# TAREAS PENDIENTES
+
+> [!IMPORTANT]
+> Modificación
+
+- [ ] Renderizar `<TablaServicios/>`
+- [ ] Arreglar vista `<Admin-Page/>`
+
 # COLOR PALETTE
+
+![Screenshot of a color palette, added in the Markdown.](https://github.com/EzeArc/Proyecto-PodoGonnet/blob/main/PodoFrontGonnet/src/assets/color-palette-podologia.png)
+
+`#fefefe`
+`#ff9abf`
+`#050505`
+`#ffc5ff`
+`#FFD3E6`
+`#B2FFC8`
 
 - Fondo y contenedores: Utiliza el blanco (#fefefe) como fondo principal para toda la página. Los contenedores de secciones, como encabezados, bloques de texto y áreas de contenido, pueden tener este color.
 

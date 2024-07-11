@@ -17,7 +17,10 @@ const urlBackListaTurnosAdmin =
   "http://localhost:8080/adminController/listaTurnoAdmin";
 const urlBackCancelarTurnoAdmin =
   "http://localhost:8080/adminController/AltaBaja/";
-
+const urlBackListaServiciosAdmin =
+  "http://localhost:8080/adminController/listaServiciosAdmin";
+const urlBackDarDeBajaServicioAdmin =
+  "http://localhost:8080/adminController/AltaBajaServicio/";
 //creo los usuarios para recibir la data del back
 const usuarioLogin = {
   id: "",
@@ -32,8 +35,8 @@ const ContextoAdministrador = createContext();
 const ContextLoginRegister = ({ children }) => {
   // creo el estado de usarios
   const [usuarioLogeado, setUsuarioLogeado] = useState(usuarioLogin);
-  const [listaServicios, setlistaServicios] = useState([]);
   const [servicio, setServicio] = useState(null);
+  const [listaServicios, setlistaServicios] = useState([]);
   const [arrayTurnos, setarrayTurnos] = useState([]);
   const [arrayTurnosAdmin, setArrayTurnosAdmin] = useState([]);
 
@@ -105,8 +108,6 @@ const ContextLoginRegister = ({ children }) => {
     return jwt;
   };
 
-  ///
-
   const VerificarExpericacionToken = async (urlVerificarToken) => {
     const respuesta = await get(urlVerificarToken);
     return respuesta;
@@ -133,6 +134,32 @@ const ContextLoginRegister = ({ children }) => {
       setServicio(respuest);
     } catch (error) {
       console.log(error);
+    }
+  };
+
+  const listaServiciosAdmin = async () => {
+    try {
+      const urlback = urlBackListaServiciosAdmin;
+
+      let jwt = window.localStorage.getItem("auth_token");
+      const respuesta = await getToken(urlback, jwt);
+      setlistaServicios(respuesta);
+    } catch (error) {
+      console.log("error al cargar la lista de servicios en el panel admin");
+    }
+  };
+
+  const eliminarServicioAdmin = async (e, servicioId) => {
+    try {
+      e.preventDefault();
+      let jwt = window.localStorage.getItem("auth_token");
+      const urlCancelarServicio = urlBackDarDeBajaServicioAdmin + servicioId;
+      const respuesta = await put(urlCancelarServicio, jwt);
+      listaServiciosAdmin();
+    } catch (error) {
+      console.log(
+        "error al eliminar un servicios de la lista de servicios en el admin dashboard "
+      );
     }
   };
 
@@ -206,6 +233,8 @@ const ContextLoginRegister = ({ children }) => {
     arrayTurnosAdmin,
     listaTurnosAdmin,
     eliminarTurnoAdmin,
+    listaServiciosAdmin,
+    eliminarServicioAdmin,
     logOut,
   };
   return (

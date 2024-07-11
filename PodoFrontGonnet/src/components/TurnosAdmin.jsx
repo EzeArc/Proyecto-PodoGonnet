@@ -2,20 +2,18 @@ import { useContext, useEffect } from "react";
 import { format } from "date-fns";
 
 import ContextoAdministrador from "../context/ContextLoginRegister";
-import "../pages/css/Tabla-Turnos-Admin.css";
+import "../pages/css/Tablas-Admin.css";
 
 export const TurnosAdmin = () => {
   const { arrayTurnosAdmin, listaTurnosAdmin, eliminarTurnoAdmin } = useContext(
     ContextoAdministrador
   );
   useEffect(() => {
-    listaTurnosAdmin()
-  }, [])
-
-
+    listaTurnosAdmin();
+  }, []);
 
   return (
-    <section className="tabla-turnos-admin">
+    <section className="tabla-admin">
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
@@ -37,46 +35,66 @@ export const TurnosAdmin = () => {
           >
             <div className="accordion-body">
               {arrayTurnosAdmin &&
-                arrayTurnosAdmin.length > 0 &&
-                arrayTurnosAdmin.some((e) => e.estado === true) ? (
+              arrayTurnosAdmin.length > 0 &&
+              arrayTurnosAdmin.some((e) => e.estado === true) ? (
                 <table className="table align-middle">
                   <thead className="tabla-header">
                     <tr>
-                      <th scope="col">Nombre del Cliente</th>
-                      <th scope="col">Nombre del servicio</th>
-                      <th scope="col">Hora del turno</th>
-                      <th scope="col">Costo</th>
-                      <th scope="col">Estado del turno</th>
-                      <th scope="col">Modificar</th>
-                      <th scope="col">Cancelar</th>
+                      <th scope="col" className="m-auto text-center">
+                        Nombre del Cliente
+                      </th>
+                      <th scope="col" className="m-auto text-center">
+                        Nombre del servicio
+                      </th>
+                      <th scope="col" className="m-auto text-center">
+                        Hora del turno
+                      </th>
+                      <th scope="col" className="m-auto text-center">
+                        Costo
+                      </th>
+                      <th scope="col" className="m-auto text-center">
+                        Estado del turno
+                      </th>
+                      <th scope="col" className="m-auto text-center">
+                        Modificar
+                      </th>
+                      <th scope="col" className="m-auto text-center">
+                        Cancelar
+                      </th>
                     </tr>
                   </thead>
                   {arrayTurnosAdmin.map((turno) =>
                     turno.estado === true ? (
                       <tbody key={turno.id}>
                         <tr>
-                          <td>{turno.usuario.nombre}</td>
-                          <td>{turno.id}</td>
-                          <td>
+                          <td className="m-auto p-4 user-name">
+                            {turno.usuario.nombre}
+                          </td>
+                          <td className="m-auto p-4 service-name">
+                            {turno.servicioPodo.nombre}
+                          </td>
+                          <td className="m-auto p-4 service-time">
                             {format(
                               new Date(turno.startTime),
                               "hh:mm a dd/MM/yyyy"
                             )}
                           </td>
-                          <td>{turno.servicioPodo.costo}</td>
-                          <td>
+                          <td className="m-auto p-4 service-price">
+                            ${turno.servicioPodo.costo}
+                          </td>
+                          <td className="m-auto p-4">
                             {turno.estado === true ? (
-                              <span>Confirmado</span>
+                              <span className="habilitado">Confirmado</span>
                             ) : (
-                              <span>Cancelado</span>
+                              <span className="deshabilitado">Cancelado</span>
                             )}
                           </td>
-                          <td>
+                          <td className="m-auto">
                             <button
-                              className="tabla-turno-btn admin-turno-btn"
-                            // onClick={(e) => {
-                            //   eliminarTurno(e, listaTurnos.id);
-                            // }}
+                              className="tabla-admin-btn admin-btn"
+                              // onClick={(e) => {
+                              //   eliminarTurno(e, listaTurnos.id);
+                              // }}
                             >
                               <img
                                 className="admin-icons"
@@ -85,9 +103,9 @@ export const TurnosAdmin = () => {
                               />
                             </button>
                           </td>
-                          <td>
+                          <td className="m-auto">
                             <button
-                              className="tabla-turno-btn admin-turno-btn"
+                              className="tabla-admin-btn admin-btn"
                               onClick={(e) => {
                                 eliminarTurnoAdmin(e, turno.id);
                               }}

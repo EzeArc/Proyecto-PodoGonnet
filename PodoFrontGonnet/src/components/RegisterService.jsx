@@ -5,7 +5,7 @@ import useTitle from "../hooks/useTitle";
 import "../pages/css/Admin-buttons.css";
 import "../pages/css/RegisterService.css";
 
-const RegisterService = () => {
+export const RegisterService = () => {
   const { SubmintCrearServicio } = useContext(ContextoAdministrador);
   useTitle({ title: "Servicios Admin" });
 
@@ -112,5 +112,3 @@ const RegisterService = () => {
     </section>
   );
 };
-
-export default RegisterService;
