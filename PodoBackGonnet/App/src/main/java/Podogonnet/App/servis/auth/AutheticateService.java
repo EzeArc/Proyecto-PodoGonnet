@@ -74,25 +74,15 @@ return authenticationResponse;
 
     }
 
-    public AuthenticationResponse validateToken(String jwt) {
+    public boolean validateToken(String jwt) {
         try {
-
-
-            String validartoke=jwtService.extracUsername(jwt);
-            AuthenticationResponse auth=new AuthenticationResponse();
-            Usuario user=usuarioServicio.findOneByUsername(validartoke);
-            auth.setUserName(user.getUsername());
-            auth.setRol(user.getRol().toString());
-            auth.setId(user.getId());
-
-
-
-            return auth;
-
+            jwtService.extracUsername(jwt);
+            return true;
 
         }catch (Exception e){
             System.out.println(e.getMessage());
-            return null;
+            System.out.println("validateTkoken(stringjwt");
+            return false;
 
         }
 

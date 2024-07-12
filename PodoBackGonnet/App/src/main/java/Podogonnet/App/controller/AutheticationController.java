@@ -6,7 +6,9 @@ import Podogonnet.App.servis.auth.AuthenticationResponse;
 import Podogonnet.App.servis.auth.AutheticateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,16 +25,17 @@ public class AutheticationController {
     }
 
     @GetMapping("validate")
-    public ResponseEntity<AuthenticationResponse> validate(@RequestParam String jwt){
-        AuthenticationResponse isValidate=autheticateService.validateToken(jwt);
-        return  ResponseEntity.ok(isValidate);
+    public boolean validate(@RequestParam String jwt) {
+
+        boolean isValidate = autheticateService.validateToken(jwt);
+        return isValidate;
 
 
     }
 
     @GetMapping("profiles")
-    public ResponseEntity<Usuario>MyProfils(){
-        Usuario user=autheticateService.findLogginInUser();
+    public ResponseEntity<Usuario> MyProfils() {
+        Usuario user = autheticateService.findLogginInUser();
         return ResponseEntity.ok(user);
 
 

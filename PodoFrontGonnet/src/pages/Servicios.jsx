@@ -13,7 +13,7 @@ const Servicios = () => {
   useEffect(() => {
     if (!servicio || servicio.id !== id) {
       seleccionarServicio(id);
-      AuthuTokenYUsiario();
+
     }
   }, [id]);
 

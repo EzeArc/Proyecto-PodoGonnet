@@ -21,7 +21,7 @@ const Dashboard = () => {
     setServicioSeleccionado(servicio);
   };
 
-  useEffect(() => {}, [arrayTurnosAdmin]);
+  useEffect(() => { }, [arrayTurnosAdmin]);
   return (
     <main className="dashboard-section">
       <h1 className="admin-title">

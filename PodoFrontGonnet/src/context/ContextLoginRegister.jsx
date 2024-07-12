@@ -6,7 +6,7 @@ import { toast } from "sonner";
 // http://localhost:8080/api/v1/auth/authenticate
 //url para hacer login
 const urlPostLogin = "http://localhost:8080/api/v1/auth/authenticate";
-const urlVerificarToken = `http://localhost:8080/api/v1/auth/validate?jwt=`;
+const urlVerificarExpiracionToken = `http://localhost:8080/api/v1/auth/validate?jwt=`;
 const urlCrearServicio = "http://localhost:8080/adminController/crearServicio";
 const urlCrearUsuario = "http://localhost:8080/api/v1/register";
 const urlListaServicios = "http://localhost:8080/portal/listaSerivicios";
@@ -85,23 +85,20 @@ const ContextLoginRegister = ({ children }) => {
 
   //VERIFICACION DE LOGIN AUTOMATICA
   const AuthuTokenYUsiario = async () => {
-    if (verificarToken()) {
-      let token = verificarToken();
-      const urlFinal = urlVerificarToken + token;
-      const respuesta = await VerificarExpericacionToken(urlFinal);
-      const usuarioRespuesta = {
-        id: respuesta.id,
-        userName: respuesta.userName,
-        jwt: respuesta.jwt,
-        Rol: respuesta.rol,
-        Auth: true,
-      };
+    let token = verificarExistenciaToken();
+    const urlFinal = urlVerificarExpiracionToken + token;
+    if (verificarExistenciaToken() && usuarioLogeado.Auth === true) {
 
-      setUsuarioLogeado(usuarioRespuesta);
-    }
+      const respuesta = await VerificarExpericacionToken(urlFinal);
+      if (respuesta === false) {
+        return window.location.href = "/login"
+      } else if (verificarExistenciaToken() && !VerificarExpericacionToken()) {
+        return
+      }
+    } /* else window.location.href = "/login" */
   };
 
-  const verificarToken = () => {
+  const verificarExistenciaToken = () => {
     let jwt = window.localStorage.getItem("auth_token");
     if (!jwt) {
       toast.warning("¡Tu sesión ha finalizo!", {
@@ -116,8 +113,8 @@ const ContextLoginRegister = ({ children }) => {
     return jwt;
   };
 
-  const VerificarExpericacionToken = async (urlVerificarToken) => {
-    const respuesta = await get(urlVerificarToken);
+  const VerificarExpericacionToken = async (urlVerificarExpiracionToken) => {
+    const respuesta = await get(urlVerificarExpiracionToken);
     return respuesta;
   };
 
@@ -139,7 +136,7 @@ const ContextLoginRegister = ({ children }) => {
     }
 
     try {
-      const token = verificarToken();
+      const token = verificarExistenciaToken();
       const respuest = await postImagen(urlCrearServicio, serviPodo, token);
       if (respuest) {
         toast.success(`¡${serviPodo.nombre} creado exitosamente!`, {
@@ -257,7 +254,7 @@ const ContextLoginRegister = ({ children }) => {
 
   const submitModificarServicio = async (e, form) => {
     e.preventDefault();
-
+    /*  AuthuTokenYUsiario() */
     const formData = new FormData();
     formData.append("id", form.id);
     formData.append("nombre", form.nombre);

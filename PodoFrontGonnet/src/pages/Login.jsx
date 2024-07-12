@@ -17,7 +17,7 @@ const Login = () => {
   );
 
   useEffect(() => {
-    AuthuTokenYUsiario();
+
   }, []);
 
   //form y use State para form
