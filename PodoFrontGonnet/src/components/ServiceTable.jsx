@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import ContextoAdministrador from "./../context/ContextLoginRegister";
-import "../pages/css/Tablas-Admin.css";
+import "./css/Tablas-Admin.css";
 
 export const ServiceTable = ({ onSeleccionarServicio }) => {
   const { eliminarServicioAdmin, listaServicios, listaServiciosAdmin } =

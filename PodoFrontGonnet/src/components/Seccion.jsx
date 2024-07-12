@@ -1,4 +1,4 @@
-import "../pages/css/seccion.css";
+import "./css/seccion.css";
 const Seccion = () => {
   return (
     <section className="hero-section">

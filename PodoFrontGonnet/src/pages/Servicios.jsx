@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import useTitle from "./../hooks/useTitle";
 import Calendario from "../components/Calendario";
-import "../pages/css/servicios.css";
+import "./css/servicios.css";
 
 const Servicios = () => {
   const { servicio, seleccionarServicio, usuarioLogeado, AuthuTokenYUsiario } =

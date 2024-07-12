@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import { Navigate } from "react-router-dom";
-import "../pages/css/login.css";
 import useTitle from "../hooks/useTitle";
+import "./css/login.css";
 
 const formInciallogin = {
   userName: "",
