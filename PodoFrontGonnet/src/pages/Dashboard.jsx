@@ -5,7 +5,7 @@ import { ServiceTable } from "./../components/ServiceTable";
 import { RegisterService } from "../components/RegisterService";
 import { AdminCardEdit } from "../components/AdminCardEdit";
 import { useParams } from "react-router-dom";
-import "../pages/css/Dashboard.css";
+import "./css/Dashboard.css";
 
 const Dashboard = () => {
   const { section } = useParams();

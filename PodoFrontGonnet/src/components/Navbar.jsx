@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import "../pages/css/nav.css";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import ContextoAdministrador from "../context/ContextLoginRegister";
+import "./css/nav.css";
 
 const Navbar = () => {
   const { usuarioLogeado, logOut } = useContext(ContextoAdministrador);

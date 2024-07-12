@@ -1,10 +1,13 @@
 import { useContext } from "react";
+import { format } from "date-fns";
 import ContextoAdministrador from "../context/ContextLoginRegister";
-import { format } from 'date-fns';
 
 const TurnoReservado = ({ listaTurnos }) => {
   const { eliminarTurno } = useContext(ContextoAdministrador);
-  const formattedStartTime = format(new Date(listaTurnos.startTime), 'hh:mm a dd/MM/yyyy');
+  const formattedStartTime = format(
+    new Date(listaTurnos.startTime),
+    "hh:mm a dd/MM/yyyy"
+  );
   return (
     <tbody>
       <tr>

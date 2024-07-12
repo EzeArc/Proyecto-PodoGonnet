@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import "../pages/css/EditCard.css";
+import "./css/EditCard.css";
 
 export const AdminCardEdit = ({ servicio }) => {
   const { nombre, imagen, descripcion, id, costo } = servicio;

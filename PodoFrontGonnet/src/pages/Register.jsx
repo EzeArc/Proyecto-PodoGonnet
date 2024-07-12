@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import useTitle from "./../hooks/useTitle";
-import "../pages/css/registro.css";
+import "./css/registro.css";
 
 const Register = () => {
   useTitle({ title: "Registro" });

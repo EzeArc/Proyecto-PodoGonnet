@@ -1,4 +1,5 @@
-import "../pages/css/Introduccion.css";
+import "./css/Introduccion.css";
+
 const Introduccion = () => {
   return (
     <section className="welcome-section ">
