@@ -20,7 +20,6 @@ const Inicio = () => {
   } = useContext(ContextoAdministrador);
 
   useEffect(() => {
-    AuthuTokenYUsiario();
     serviciosBack();
     listaTurnos();
   }, []);

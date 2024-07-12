@@ -9,10 +9,12 @@ const AppRouters = () => {
 
   useEffect(() => {
     AuthuTokenYUsiario();
-  }, []);
+    console.log("token")
+  }, [AuthuTokenYUsiario]);
 
   return (
     <Routes>
+
       {usuarioLogeado.Auth === false ? (
         <Route path="/*" element={<PublicRoutes />} />
       ) : (
