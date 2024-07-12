@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { format } from "date-fns";
 import ContextoAdministrador from "../context/ContextLoginRegister";

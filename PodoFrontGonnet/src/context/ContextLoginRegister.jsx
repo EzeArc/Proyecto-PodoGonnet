@@ -52,7 +52,7 @@ const ContextLoginRegister = ({ children }) => {
     }
   };
 
-  /// traigo los servicios del back para mostrarlos en inicio
+  /// Lista de SERVICIOS  para mostrarlos en inicio
   const serviciosBack = async () => {
     try {
       const respuesta = await get(urlListaServicios);
@@ -84,32 +84,29 @@ const ContextLoginRegister = ({ children }) => {
   };
 
   //VERIFICACION DE LOGIN AUTOMATICA
-  const AuthuTokenYUsiario = async () => {
+  const AuthTokenYUsiario = async () => {
     let token = verificarExistenciaToken();
     const urlFinal = urlVerificarExpiracionToken + token;
     if (verificarExistenciaToken() && usuarioLogeado.Auth === true) {
-
       const respuesta = await VerificarExpericacionToken(urlFinal);
       if (respuesta === false) {
-        return window.location.href = "/login"
+        console.log("Usuario siendo redirigido...");
+        toast.warning("Serás redirigido al login en un momento...", {
+          className: "toast-warning",
+          style: { width: "fit-content" },
+        });
+        return setTimeout(function () {
+          window.location.href = "/login";
+        }, 2000);
       } else if (verificarExistenciaToken() && !VerificarExpericacionToken()) {
-        return
+        return;
       }
-    } /* else window.location.href = "/login" */
+    }
   };
 
   const verificarExistenciaToken = () => {
     let jwt = window.localStorage.getItem("auth_token");
-    if (!jwt) {
-      toast.warning("¡Tu sesión ha finalizo!", {
-        style: {
-          width: "fit-content",
-        },
-        className: "class",
-      });
-      return false;
-    }
-
+    if (!jwt) return false;
     return jwt;
   };
 
@@ -254,7 +251,6 @@ const ContextLoginRegister = ({ children }) => {
 
   const submitModificarServicio = async (e, form) => {
     e.preventDefault();
-    /*  AuthuTokenYUsiario() */
     const formData = new FormData();
     formData.append("id", form.id);
     formData.append("nombre", form.nombre);
@@ -298,7 +294,7 @@ const ContextLoginRegister = ({ children }) => {
     VerificarExpericacionToken,
     SubmitLogin,
     usuarioLogeado,
-    AuthuTokenYUsiario,
+    AuthTokenYUsiario,
     SubmintCrearServicio,
     SubmitRegistro,
     listaServicios,

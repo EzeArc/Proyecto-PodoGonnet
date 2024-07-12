@@ -6,14 +6,14 @@ import Calendario from "../components/Calendario";
 import "./css/servicios.css";
 
 const Servicios = () => {
-  const { servicio, seleccionarServicio, usuarioLogeado, AuthuTokenYUsiario } =
-    useContext(ContextoAdministrador);
+  const { servicio, seleccionarServicio, usuarioLogeado } = useContext(
+    ContextoAdministrador
+  );
   const { id } = useParams();
 
   useEffect(() => {
     if (!servicio || servicio.id !== id) {
       seleccionarServicio(id);
-
     }
   }, [id]);
 

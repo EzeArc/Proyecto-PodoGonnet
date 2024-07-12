@@ -4,7 +4,7 @@ import "./css/EditCard.css";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 
 export const AdminCardEdit = ({ servicio }) => {
-  const { nombre, imagen, descripcion, id, costo } = servicio;
+  const { nombre, imagen, descripcion, costo } = servicio;
   const { submitModificarServicio } = useContext(ContextoAdministrador);
   const [form, setForm] = useState({
     id: servicio.id,

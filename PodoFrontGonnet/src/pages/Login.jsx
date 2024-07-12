@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import { Navigate } from "react-router-dom";
 import useTitle from "../hooks/useTitle";
@@ -11,14 +11,7 @@ const formInciallogin = {
 
 const Login = () => {
   useTitle({ title: "Login" });
-  //todo lo que viene del back esta aca
-  const { SubmitLogin, usuarioLogeado, AuthuTokenYUsiario } = useContext(
-    ContextoAdministrador
-  );
-
-  useEffect(() => {
-
-  }, []);
+  const { SubmitLogin, usuarioLogeado } = useContext(ContextoAdministrador);
 
   //form y use State para form
   const [formlogin, setformlogin] = useState(formInciallogin);
