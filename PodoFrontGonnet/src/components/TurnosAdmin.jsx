@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
 import ContextoAdministrador from "../context/ContextLoginRegister";
-import "../pages/css/Tablas-Admin.css";
+import "./css/Tablas-Admin.css";
 
 export const TurnosAdmin = () => {
   const { arrayTurnosAdmin, listaTurnosAdmin, eliminarTurnoAdmin } = useContext(

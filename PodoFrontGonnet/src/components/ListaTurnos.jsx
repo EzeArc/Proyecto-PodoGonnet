@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import TurnoReservado from "./TurnoReservado";
-import "../pages/css/listaTurno.css";
+import "./css/listaTurno.css";
 
 const ListaTurnos = () => {
   const { arrayTurnos } = useContext(ContextoAdministrador);

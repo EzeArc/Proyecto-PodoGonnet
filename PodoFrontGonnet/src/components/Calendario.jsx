@@ -2,9 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import Calendar from "react-calendar";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import "react-calendar/dist/Calendar.css";
-import "../pages/css/calendario.css";
-import "../pages/css/calendar-time-section.css";
-import "../pages/css/Button-styles.css";
+import "./css/calendario.css";
+import "./css/calendar-time-section.css";
+import "./css/Button-styles.css";
 
 const Calendario = ({ servicioId }) => {
   const [date, setDate] = useState(new Date());
