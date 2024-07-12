@@ -5,7 +5,8 @@ import PublicRoutes from "./PublicRoutes";
 import AuthRoutes from "./AuthRoutes";
 
 const AppRouters = () => {
-  const { usuarioLogeado, AuthuTokenYUsiario, serviciosBack, listaTurnos } = useContext(ContextoAdministrador);
+  const { usuarioLogeado, AuthuTokenYUsiario, serviciosBack, listaTurnos } =
+    useContext(ContextoAdministrador);
 
   useEffect(() => {
     AuthuTokenYUsiario();

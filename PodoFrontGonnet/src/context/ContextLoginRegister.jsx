@@ -1,7 +1,7 @@
-import { createContext, useEffect, useState } from "react";
-import { Await } from "react-router-dom";
+import { createContext, useState } from "react";
 
 import { get, getToken, post, postImagen, put } from "../utils/http";
+import { toast } from "sonner";
 
 // http://localhost:8080/api/v1/auth/authenticate
 //url para hacer login
@@ -103,7 +103,15 @@ const ContextLoginRegister = ({ children }) => {
 
   const verificarToken = () => {
     let jwt = window.localStorage.getItem("auth_token");
-    if (!jwt) return false;
+    if (!jwt) {
+      toast.warning("¡Tu sesión ha finalizo!", {
+        style: {
+          width: "fit-content",
+        },
+        className: "class",
+      });
+      return false;
+    }
 
     return jwt;
   };
@@ -115,15 +123,46 @@ const ContextLoginRegister = ({ children }) => {
 
   const SubmintCrearServicio = async (e, serviPodo) => {
     e.preventDefault();
+
+    // Validación de campos requeridos
+    if (
+      !serviPodo.nombre ||
+      !serviPodo.descripcion ||
+      !serviPodo.costo ||
+      !serviPodo.imagen
+    ) {
+      toast.warning("Por favor, completa todos los campos requeridos.", {
+        className: "toast-warning",
+        style: { width: "fit-content" },
+      });
+      return;
+    }
+
     try {
       const token = verificarToken();
       const respuest = await postImagen(urlCrearServicio, serviPodo, token);
       if (respuest) {
+        toast.success(`¡${serviPodo.nombre} creado exitosamente!`, {
+          className: "toast-success",
+          style: { width: "fit-content" },
+        });
         window.location.href = "/login";
+      } else {
+        toast.error(`¡Error al crear el servicio!`, {
+          className: "toast-error",
+          style: { width: "fit-content" },
+        });
       }
       return console.log(respuest);
     } catch (error) {
-      console.log("error en cath de postIamgen");
+      console.log("Error al cargar el servicio!");
+      toast.error(
+        "Ocurrió un error al crear el servicio. Inténtalo de nuevo.",
+        {
+          className: "toast-error",
+          style: { width: "fit-content" },
+        }
+      );
     }
   };
 
@@ -237,12 +276,20 @@ const ContextLoginRegister = ({ children }) => {
           body: formData,
         }
       );
-      listaServiciosAdmin()
+      listaServiciosAdmin();
 
       if (response.ok) {
-        console.log("Servicio modificado con éxito:");
+        toast.success(`¡Servicio: ${form.nombre} actualizado!`, {
+          className: "toast-success",
+          style: { width: "fit-content" },
+        });
+
         window.location.hash = "#TablaServicios";
       } else {
+        toast.error(`¡Error al actualizar ${form.nombre}!`, {
+          className: "toast-error",
+          style: { width: "fit-content" },
+        });
         console.error("Error al modificar el servicio");
       }
     } catch (error) {
@@ -270,7 +317,7 @@ const ContextLoginRegister = ({ children }) => {
     listaServiciosAdmin,
     eliminarServicioAdmin,
     logOut,
-    submitModificarServicio
+    submitModificarServicio,
   };
   return (
     <ContextoAdministrador.Provider value={data}>

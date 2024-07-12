@@ -3,8 +3,14 @@
 > [!IMPORTANT]
 > Modificación
 
-- [ ] Renderizar `<TablaServicios/>`
+## BACK
+
+- [ ] Validar que al cargar servicio no se agreguen datos null `<RegisterService/>`
 - [ ] Arreglar vista `<Admin-Page/>`
+
+## FRONT
+
+- [ ] Manejar la carga de datos vacios en los formularios para renderizar las alertas.
 
 # COLOR PALETTE
 

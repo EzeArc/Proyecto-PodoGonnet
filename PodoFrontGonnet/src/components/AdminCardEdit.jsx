@@ -5,7 +5,7 @@ import ContextoAdministrador from "../context/ContextLoginRegister";
 
 export const AdminCardEdit = ({ servicio }) => {
   const { nombre, imagen, descripcion, id, costo } = servicio;
-  const { submitModificarServicio } = useContext(ContextoAdministrador)
+  const { submitModificarServicio } = useContext(ContextoAdministrador);
   const [form, setForm] = useState({
     id: servicio.id,
     nombre: nombre || "",
@@ -49,7 +49,6 @@ export const AdminCardEdit = ({ servicio }) => {
       reader.readAsDataURL(file);
     }
   };
-
 
   return (
     <section className="card-edit-section" id="target-div">
@@ -108,7 +107,6 @@ export const AdminCardEdit = ({ servicio }) => {
           </div>
         </div>
         <button
-
           className="article-button"
           onClick={(e) => {
             submitModificarServicio(e, form);
