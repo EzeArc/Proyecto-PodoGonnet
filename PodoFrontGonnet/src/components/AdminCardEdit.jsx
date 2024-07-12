@@ -30,7 +30,6 @@ export const AdminCardEdit = ({ servicio }) => {
       ...form,
       [e.target.name]: e.target.value,
     });
-
   };
 
   const handleImageChange = (e) => {
@@ -48,7 +47,6 @@ export const AdminCardEdit = ({ servicio }) => {
     if (file) {
       reader.readAsDataURL(file);
     }
-
   };
 
   const submitModificarServicio = async (e, form) => {
@@ -61,14 +59,18 @@ export const AdminCardEdit = ({ servicio }) => {
     formData.append("costo", form.costo);
     formData.append("file", form.file);
     try {
-      let token = localStorage.getItem("auth_token")
-      const response = await fetch("http://localhost:8080/adminController/ModificarServicio", {
-        method: "PUT", headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: formData,
-      });
-      console.log(response)
+      let token = localStorage.getItem("auth_token");
+      const response = await fetch(
+        "http://localhost:8080/adminController/ModificarServicio",
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          body: formData,
+        }
+      );
+      console.log(response);
       if (response.ok) {
         console.log("Servicio modificado con éxito:");
       } else {
@@ -84,7 +86,7 @@ export const AdminCardEdit = ({ servicio }) => {
       <h2 className="admin-title">
         Editando <span className="admin-userName">{servicio.nombre}</span>
       </h2>
-      <article className="article-container">
+      <article className="card-container-editable">
         <div>
           <img
             className="service-img"

@@ -33,9 +33,6 @@ export const RegisterService = () => {
 
   return (
     <section className="register-service-section">
-      <h1 className="admin-title">
-        ¡Bienvenido <span className="admin-userName">Admin</span>!
-      </h1>
       <h2 className="admin-subtitle">Ingrese el servicio a crear</h2>
       <form className="register-service-form" encType='"multipart/form-data"'>
         <div className="register-service-inset">
@@ -102,11 +99,11 @@ export const RegisterService = () => {
       <div className="admin-section-buttons">
         <Link className="admin-btn" to={"/"}>
           {" "}
-          Ir Inicio
+          Volver a inicio
         </Link>
-        <Link className="admin-btn" to={"/"}>
+        <Link className="admin-btn" to={"/admin/turnos"}>
           {" "}
-          Volver
+          Ver turnos
         </Link>
       </div>
     </section>

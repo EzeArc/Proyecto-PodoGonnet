@@ -7,9 +7,11 @@
 
 .tabla-admin {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 2rem;
+  row-gap: 40px;
 }
 
 .tabla-admin-body {
