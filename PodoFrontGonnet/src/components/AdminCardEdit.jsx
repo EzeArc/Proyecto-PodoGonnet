@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "../pages/css/EditCard.css";
+import ContextoAdministrador from "../context/ContextLoginRegister";
 
 export const AdminCardEdit = ({ servicio }) => {
   const { nombre, imagen, descripcion, id, costo } = servicio;
-
+  const { submitModificarServicio } = useContext(ContextoAdministrador)
   const [form, setForm] = useState({
     id: servicio.id,
     nombre: nombre || "",
@@ -49,37 +50,6 @@ export const AdminCardEdit = ({ servicio }) => {
     }
   };
 
-  const submitModificarServicio = async (e, form) => {
-    e.preventDefault();
-
-    const formData = new FormData();
-    formData.append("id", form.id);
-    formData.append("nombre", form.nombre);
-    formData.append("descripcion", form.descripcion);
-    formData.append("costo", form.costo);
-    formData.append("file", form.file);
-    try {
-      let token = localStorage.getItem("auth_token");
-      const response = await fetch(
-        "http://localhost:8080/adminController/ModificarServicio",
-        {
-          method: "PUT",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          body: formData,
-        }
-      );
-      console.log(response);
-      if (response.ok) {
-        console.log("Servicio modificado con éxito:");
-      } else {
-        console.error("Error al modificar el servicio");
-      }
-    } catch (error) {
-      console.error("Error en la solicitud:", error);
-    }
-  };
 
   return (
     <section className="card-edit-section" id="target-div">
@@ -138,6 +108,7 @@ export const AdminCardEdit = ({ servicio }) => {
           </div>
         </div>
         <button
+
           className="article-button"
           onClick={(e) => {
             submitModificarServicio(e, form);

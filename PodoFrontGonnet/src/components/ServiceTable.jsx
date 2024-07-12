@@ -11,7 +11,7 @@ export const ServiceTable = ({ onSeleccionarServicio }) => {
   }, []);
 
   return (
-    <section className="tabla-admin my-5">
+    <section className="tabla-admin my-5" id="TablaServicios">
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
