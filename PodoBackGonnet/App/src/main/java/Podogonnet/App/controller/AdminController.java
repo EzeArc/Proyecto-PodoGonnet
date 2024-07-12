@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -25,13 +26,16 @@ public class AdminController {
     private TurnoServicio turnoServicio;
 
     @PostMapping("/crearServicio")
-    public ResponseEntity<ServicioPodo> crearServicioPodo(ServicioPodo servicioPodo, @RequestParam("file") MultipartFile file) {
+    public ResponseEntity<ServicioPodo> crearServicioPodo(
+            @RequestParam("nombre") String nombre,
+            @RequestParam("descripcion") String descripcion,
+            @RequestParam("costo") Double costo,
+            @RequestParam("file") MultipartFile file) {
 
         try {
-            return ResponseEntity.ok(podoServicio.crearServicioPodo(servicioPodo, file));
+            return ResponseEntity.ok(podoServicio.crearServicioPodo(nombre, descripcion, costo, file));
         } catch (Exception exception) {
             exception.printStackTrace();
-            System.out.println("hola entro al controlador");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 
         }
@@ -69,12 +73,12 @@ public class AdminController {
     }
 
     @PutMapping("/ModificarServicio")
-    public void modificarServicio( ServicioPodo servicioPodo, @RequestParam("file") MultipartFile file) {
-        try {
-            podoServicio.modificarServicio(servicioPodo, file);
-        } catch (Exception e) {
-            e.getStackTrace();
-        }
+    public void modificarServicio(@RequestParam("id") String id,
+                                  @RequestParam("nombre") String nombre,
+                                  @RequestParam("descripcion") String descripcion,
+                                  @RequestParam("costo") Double costo,
+                                  @RequestParam("file") MultipartFile file) throws IOException {
+        podoServicio.modificarServicio(id, nombre, descripcion, costo, file);
     }
 
 }
