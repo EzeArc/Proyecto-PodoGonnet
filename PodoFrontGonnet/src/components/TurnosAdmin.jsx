@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { format } from "date-fns";
-
+import { Link } from "react-router-dom";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import "../pages/css/Tablas-Admin.css";
 
@@ -15,10 +15,10 @@ export const TurnosAdmin = () => {
   return (
     <section className="tabla-admin">
       <div className="accordion" id="accordionExample">
-        <div className="accordion-item">
+        <div className="accordion-item text-center">
           <h2 className="accordion-header">
             <button
-              className="accordion-button"
+              className="accordion-button collapsed"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseOne"
@@ -128,6 +128,16 @@ export const TurnosAdmin = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="admin-section-buttons">
+        <Link className="admin-btn" to={"/"}>
+          {" "}
+          Volver a inicio
+        </Link>
+        <Link className="admin-btn" to={"/admin/turnos"}>
+          {" "}
+          Ir a servicios
+        </Link>
       </div>
     </section>
   );

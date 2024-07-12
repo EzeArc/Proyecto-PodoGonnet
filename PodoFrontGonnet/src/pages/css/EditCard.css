@@ -5,10 +5,28 @@
   align-items: center;
 }
 
+.card-container-editable {
+  width: 400px;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  box-shadow: 5px 5px 10px 1px #f6dbd6;
+  border-radius: 16px 16px 0 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.card-container-editable:hover {
+  transform: scale(1.1);
+  border: 1px solid beige;
+}
+
 /* Estilos para que los inputs y textareas se vean como texto plano */
 .service-text-input,
 .service-price-input {
-  width: 100%; /* Asegura que el input ocupe todo el ancho disponible */
+  width: 100%;
   display: block;
   box-sizing: border-box;
   border: none;
