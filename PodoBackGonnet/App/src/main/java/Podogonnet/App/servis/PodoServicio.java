@@ -21,7 +21,7 @@ public class PodoServicio {
     @Autowired
     private PodoRepository podoRepository;
     @Autowired
-    private  ImagenServicio imagenServicio;
+    private ImagenServicio imagenServicio;
 
 
     public List<ServicioPodo> findAll() {
@@ -31,14 +31,14 @@ public class PodoServicio {
     }
 
     @Transactional
-    public ServicioPodo crearServicioPodo(ServicioPodo servicioPodo,MultipartFile file) throws Exception {
+    public ServicioPodo crearServicioPodo(String nombre, String descripcion, double costo, MultipartFile file) throws Exception {
 
         try {
             ServicioPodo servicioPodoDb = new ServicioPodo();
-            Imagen imagen=imagenServicio.crearImagen(file);
-            servicioPodoDb.setNombre(servicioPodo.getNombre());
-            servicioPodoDb.setDescripcion(servicioPodo.getDescripcion());
-            servicioPodoDb.setCosto(servicioPodo.getCosto());
+            Imagen imagen = imagenServicio.crearImagen(file);
+            servicioPodoDb.setNombre(nombre);
+            servicioPodoDb.setDescripcion(descripcion);
+            servicioPodoDb.setCosto(costo);
             servicioPodoDb.setImagen(imagen);
             podoRepository.save(servicioPodoDb);
             return servicioPodoDb;
@@ -54,45 +54,41 @@ public class PodoServicio {
     public List<ServicioPodo> listaServicios() {
         try {
             return podoRepository.findAll();
-        }catch (Exception e){
+        } catch (Exception e) {
 
             System.out.println(e.getStackTrace());
             return null;
         }
 
 
-
     }
 
     public ServicioPodo findById(String id) {
 
-           return podoRepository.findById(id).orElseThrow(null);
+        return podoRepository.findById(id).orElseThrow(null);
 
     }
 
     public void AltaBaja(String id) {
-Optional<ServicioPodo>servicioPodoOptional=podoRepository.findById(id);
-if (servicioPodoOptional.isPresent()){
-    ServicioPodo servicioPodo=servicioPodoOptional.get();
-    servicioPodo.setEstado(!servicioPodo.isEstado());
-    podoRepository.save(servicioPodo);
-}
+        Optional<ServicioPodo> servicioPodoOptional = podoRepository.findById(id);
+        if (servicioPodoOptional.isPresent()) {
+            ServicioPodo servicioPodo = servicioPodoOptional.get();
+            servicioPodo.setEstado(!servicioPodo.isEstado());
+            podoRepository.save(servicioPodo);
+        }
     }
 
-    public void modificarServicio(ServicioPodo servicioPodo, MultipartFile file) throws IOException {
-       Optional<ServicioPodo>servicio=podoRepository.findById(servicioPodo.getId());
-       Imagen imagen=imagenServicio.crearImagen(file);
-       if (servicio.isPresent()){
-           ServicioPodo servicioModifar=servicio.get();
-           servicioModifar.setNombre(servicioPodo.getNombre());
-           servicioModifar.setCosto(servicioPodo.getCosto());
-           servicioModifar.setDescripcion(servicioPodo.getDescripcion());
-           servicioModifar.setImagen(imagen);
-           servicioModifar.setEstado(servicioModifar.isEstado());
-           podoRepository.save(servicioModifar);
-           System.out.println("todo bien|||||||||||||||||||||||||||||||||||||||||");
-           System.out.println(servicioModifar);
-
-       }
+    public void modificarServicio(String id, String nombre, String descripcion, double costo, MultipartFile file) throws IOException {
+        Optional<ServicioPodo> servicio = podoRepository.findById(id);
+        Imagen imagen = imagenServicio.crearImagen(file);
+        if (servicio.isPresent()) {
+            ServicioPodo servicioModifar = servicio.get();
+            servicioModifar.setNombre(nombre);
+            servicioModifar.setCosto(costo);
+            servicioModifar.setDescripcion(descripcion);
+            servicioModifar.setImagen(imagen);
+            servicioModifar.setEstado(servicioModifar.isEstado());
+            podoRepository.save(servicioModifar);
+        }
     }
 }
