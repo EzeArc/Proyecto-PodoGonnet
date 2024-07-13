@@ -173,7 +173,7 @@ const ContextLoginRegister = ({ children }) => {
   const listaServiciosAdmin = async () => {
     try {
       const urlback = urlBackListaServiciosAdmin;
-
+      console.log("Hola desde listaServiciosAdmin()");
       let jwt = window.localStorage.getItem("auth_token");
       const respuesta = await getToken(urlback, jwt);
       setlistaServicios(respuesta);
@@ -201,6 +201,8 @@ const ContextLoginRegister = ({ children }) => {
       const urlback = urlBackListaTurno + usuarioLogeado.id;
 
       let jwt = window.localStorage.getItem("auth_token");
+      console.log("Hola desde listaTurnos()");
+
       const respuesta = await getToken(urlback, jwt);
       setarrayTurnos(respuesta);
     } catch (error) {
@@ -213,6 +215,8 @@ const ContextLoginRegister = ({ children }) => {
       e.preventDefault();
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarTurno = urlBackCancelarTurno + turnoId;
+      console.log("Hola desde eliminarTurno()");
+
       const respuesta = await getToken(urlCancelarTurno, jwt);
       listaTurnos();
     } catch (error) {
@@ -225,6 +229,8 @@ const ContextLoginRegister = ({ children }) => {
       const urlback = urlBackListaTurnosAdmin;
 
       let jwt = window.localStorage.getItem("auth_token");
+      console.log("Hola desde listaTurnosAdmin()");
+
       const respuesta = await getToken(urlback, jwt);
       setArrayTurnosAdmin(respuesta);
     } catch (error) {
@@ -251,6 +257,8 @@ const ContextLoginRegister = ({ children }) => {
 
   const submitModificarServicio = async (e, form) => {
     e.preventDefault();
+
+    console.log("****Hola desde el modificarServicio****");
     const formData = new FormData();
     formData.append("id", form.id);
     formData.append("nombre", form.nombre);
