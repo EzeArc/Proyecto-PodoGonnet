@@ -21,7 +21,6 @@ export const RegisterService = () => {
       ...form,
       [e.target.name]: e.target.value,
     });
-    console.log(form);
   };
 
   const handleImageChange = (e) => {

@@ -5,6 +5,7 @@ import { ServiceTable } from "./../components/ServiceTable";
 import { RegisterService } from "../components/RegisterService";
 import { AdminCardEdit } from "../components/AdminCardEdit";
 import { useParams } from "react-router-dom";
+import { Toaster } from "sonner";
 import "./css/Dashboard.css";
 
 const Dashboard = () => {
@@ -35,7 +36,10 @@ const Dashboard = () => {
               <RegisterService />
               <ServiceTable onSeleccionarServicio={handleSeleccionarServicio} />
               {servicioSeleccionado && (
-                <AdminCardEdit servicio={servicioSeleccionado} />
+                <>
+                  <AdminCardEdit servicio={servicioSeleccionado} />
+                  <Toaster className="toast-success toast-error toast-warning" />
+                </>
               )}
             </>
           )}

@@ -7,9 +7,7 @@ import "./css/registro.css";
 const Register = () => {
   useTitle({ title: "Registro" });
 
-  const { SubmitRegistro, AuthuTokenYUsiario, usuarioLogeado } = useContext(
-    ContextoAdministrador
-  );
+  const { SubmitRegistro } = useContext(ContextoAdministrador);
 
   const [form, setform] = useState({
     userName: "",
