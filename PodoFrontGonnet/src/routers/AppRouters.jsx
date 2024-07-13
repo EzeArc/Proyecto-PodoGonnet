@@ -10,7 +10,7 @@ const AppRouters = () => {
   );
 
   useEffect(() => {
-    AuthTokenYUsiario();
+    AuthTokenYUsiario()
   }, [AuthTokenYUsiario]);
 
   /* 
