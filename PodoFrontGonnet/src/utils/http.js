@@ -28,14 +28,16 @@ export const getToken = async (url, token) => {
     const respuesta = await fetch(url, fetchConfig);
 
     if (!respuesta.ok) {
+      console.log("---!respuesta.ok?---" + respuesta.ok);
       throw new Error(
-        respuesta.status + " error en fetch " + respuesta.statusText
+        respuesta.status + " Error en fetch getToken " + respuesta.statusText
       );
     }
     const data = await respuesta.json();
     return data;
   } catch (error) {
-    console.log(`error catch de get ${error}`);
+    console.log(`Error catch de GET-TOKEN ${error}`);
+    console.log("---Creo q el tema esta acá---");
   }
 };
 
@@ -86,8 +88,8 @@ export const postImagen = async (url, servicioPodo, token) => {
     if (!respuesta.ok) {
       throw new Error(
         respuesta.status +
-        " error en fetch [post hhtp]: " +
-        respuesta.statusText
+          " error en fetch [post hhtp]: " +
+          respuesta.statusText
       );
     }
 
