@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
-
 import { get, getToken, post, postImagen, put } from "../utils/http";
 import { toast } from "sonner";
+import { validateForm } from "./../utils/validations";
 
 // http://localhost:8080/api/v1/auth/authenticate
 //url para hacer login
@@ -42,6 +43,19 @@ const ContextLoginRegister = ({ children }) => {
 
   const SubmitRegistro = async (e, formRegistro) => {
     e.preventDefault();
+
+    // Llama a la función de validación
+    const errors = validateForm(formRegistro);
+    if (errors.length > 0) {
+      errors.forEach((error) => {
+        toast.warning(error, {
+          className: "toast-warning",
+          style: { width: "fit-content" },
+        });
+      });
+      return;
+    }
+
     try {
       const respuesta = await post(urlCrearUsuario, formRegistro);
       if (respuesta) {
@@ -49,6 +63,11 @@ const ContextLoginRegister = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
+      console.log("Error al ingresar los datos de usuario");
+      toast.error(`¡Error al ingresar datos del usuario: ${errors}!`, {
+        className: "toast-error",
+        style: { width: "fit-content" },
+      });
     }
   };
 
@@ -59,6 +78,7 @@ const ContextLoginRegister = ({ children }) => {
       setlistaServicios(respuesta);
     } catch (error) {
       console.log(error);
+      console.log("Error al cargar los servicios");
     }
   };
 
@@ -79,10 +99,13 @@ const ContextLoginRegister = ({ children }) => {
       setUsuarioLogeado(usuarioRespuesta);
       window.localStorage.setItem("auth_token", respuesta.jwt);
     } catch (error) {
-      console.log("No existe ese usuario maquina (linea 48");
+      console.log("Error al ingresar los datos de usuario");
+      toast.error(`¡Error al ingresar datos del usuario!`, {
+        className: "toast-error",
+        style: { width: "fit-content" },
+      });
     }
   };
-
   //VERIFICACION DE LOGIN AUTOMATICA
   const AuthTokenYUsiario = async () => {
     let token = verificarExistenciaToken();
@@ -167,13 +190,13 @@ const ContextLoginRegister = ({ children }) => {
       setServicio(respuest);
     } catch (error) {
       console.log(error);
+      console.log(`Error al seleccionar servicio: ${idServicio}`);
     }
   };
 
   const listaServiciosAdmin = async () => {
     try {
       const urlback = urlBackListaServiciosAdmin;
-      console.log("Hola desde listaServiciosAdmin()");
       let jwt = window.localStorage.getItem("auth_token");
       const respuesta = await getToken(urlback, jwt);
       setlistaServicios(respuesta);
@@ -188,10 +211,16 @@ const ContextLoginRegister = ({ children }) => {
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarServicio = urlBackDarDeBajaServicioAdmin + servicioId;
       const respuesta = await put(urlCancelarServicio, jwt);
+      if (respuesta.ok) {
+        toast.success(`¡Servicio: ${servicioId} dado de baja!`, {
+          className: "toast-success",
+          style: { width: "fit-content" },
+        });
+      }
       listaServiciosAdmin();
     } catch (error) {
       console.log(
-        "error al eliminar un servicios de la lista de servicios en el admin dashboard "
+        "Error al eliminar un servicios de la lista de servicios en el admin dashboard "
       );
     }
   };
@@ -199,14 +228,11 @@ const ContextLoginRegister = ({ children }) => {
   const listaTurnos = async () => {
     try {
       const urlback = urlBackListaTurno + usuarioLogeado.id;
-
       let jwt = window.localStorage.getItem("auth_token");
-      console.log("Hola desde listaTurnos()");
-
       const respuesta = await getToken(urlback, jwt);
       setarrayTurnos(respuesta);
     } catch (error) {
-      console.log("error 171");
+      console.log("Error al listar los turnos");
     }
   };
 
@@ -215,9 +241,13 @@ const ContextLoginRegister = ({ children }) => {
       e.preventDefault();
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarTurno = urlBackCancelarTurno + turnoId;
-      console.log("Hola desde eliminarTurno()");
-
       const respuesta = await getToken(urlCancelarTurno, jwt);
+      if (respuesta.ok) {
+        toast.success(`Turno: ${turnoId} eliminado con exíto!`, {
+          className: "toast-success",
+          style: { width: "fit-content" },
+        });
+      }
       listaTurnos();
     } catch (error) {
       console.log("error ");
@@ -227,10 +257,7 @@ const ContextLoginRegister = ({ children }) => {
   const listaTurnosAdmin = async () => {
     try {
       const urlback = urlBackListaTurnosAdmin;
-
       let jwt = window.localStorage.getItem("auth_token");
-      console.log("Hola desde listaTurnosAdmin()");
-
       const respuesta = await getToken(urlback, jwt);
       setArrayTurnosAdmin(respuesta);
     } catch (error) {
@@ -244,6 +271,12 @@ const ContextLoginRegister = ({ children }) => {
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarTurno = urlBackCancelarTurnoAdmin + turnoId;
       const respuesta = await put(urlCancelarTurno, jwt);
+      if (respuesta.ok) {
+        toast.success(`Turno: ${turnoId} eliminado con exíto!`, {
+          className: "toast-success",
+          style: { width: "fit-content" },
+        });
+      }
       listaTurnosAdmin();
     } catch (error) {
       console.log("error ");
