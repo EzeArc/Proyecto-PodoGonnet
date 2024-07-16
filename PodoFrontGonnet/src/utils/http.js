@@ -38,6 +38,7 @@ export const getToken = async (url, token) => {
   } catch (error) {
     console.log(`Error catch de GET-TOKEN ${error}`);
     console.log("---Creo q el tema esta acá---");
+    return null;
   }
 };
 
@@ -88,8 +89,8 @@ export const postImagen = async (url, servicioPodo, token) => {
     if (!respuesta.ok) {
       throw new Error(
         respuesta.status +
-          " error en fetch [post hhtp]: " +
-          respuesta.statusText
+        " error en fetch [post hhtp]: " +
+        respuesta.statusText
       );
     }
 

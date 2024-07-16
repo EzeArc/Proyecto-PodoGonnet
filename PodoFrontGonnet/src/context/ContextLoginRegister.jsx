@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 
 import { get, getToken, post, postImagen, put } from "../utils/http";
 import { toast } from "sonner";
+import { matchPath } from "react-router-dom";
 
 // http://localhost:8080/api/v1/auth/authenticate
 //url para hacer login
@@ -21,6 +22,7 @@ const urlBackListaServiciosAdmin =
   "http://localhost:8080/adminController/listaServiciosAdmin";
 const urlBackDarDeBajaServicioAdmin =
   "http://localhost:8080/adminController/AltaBajaServicio/";
+const urlValidateGetUsuario = "http://localhost:8080/api/v1/auth/validateGetProfile?jwt="
 //creo los usuarios para recibir la data del back
 const usuarioLogin = {
   id: "",
@@ -86,23 +88,48 @@ const ContextLoginRegister = ({ children }) => {
   //VERIFICACION DE LOGIN AUTOMATICA
   const AuthTokenYUsiario = async () => {
     let token = verificarExistenciaToken();
+
     const urlFinal = urlVerificarExpiracionToken + token;
-    if (verificarExistenciaToken() && usuarioLogeado.Auth === true) {
-      const respuesta = await VerificarExpericacionToken(urlFinal);
-      if (respuesta === false) {
-        console.log("Usuario siendo redirigido...");
-        toast.warning("Serás redirigido al login en un momento...", {
-          className: "toast-warning",
-          style: { width: "fit-content" },
-        });
-        return setTimeout(function () {
+    const urlValidateGetUsuarioFinal = urlValidateGetUsuario + token
+    const usuarioValido = await GetUsuarioToken(urlValidateGetUsuarioFinal, token);
+    console.log("por entrar---------------------")
+    console.log(usuarioLogeado.Auth)
+    if (usuarioLogeado.Auth === false && usuarioValido) {
+      console.log("pasara-----------------------????????")
+      const usuarioRespuesta = {
+        id: usuarioValido.id,
+        userName: usuarioValido.userName,
+        jwt: usuarioValido.jwt,
+        Rol: usuarioValido.rol,
+        Auth: true,
+      };
+      setUsuarioLogeado(usuarioRespuesta);
+    } else if (verificarExistenciaToken() && !usuarioValido) {
+      const excludedPaths = ['/login', 'registro', '/', '/servicio/*']; // Agrega aquí las rutas que quieres excluir
+      const isExcluded = excludedPaths.some(path =>
+        matchPath({ path, exact: true }, location.pathname)
+      );
+      if (!isExcluded) { // Verifica si la ruta actual no está en las rutas excluidas
+        console.log("token vencido");
+        setTimeout(function () {
           window.location.href = "/login";
         }, 2000);
-      } else if (verificarExistenciaToken() && !VerificarExpericacionToken()) {
-        return;
       }
     }
-  };
+  }
+
+  const GetUsuarioToken = async (urlValidateGetUsuarioFinal, token) => {
+
+    try {
+      const respuesta = await getToken(urlValidateGetUsuarioFinal, token)
+      console.log("PASO EL GET TOKEEEENNN")
+      console.log(usuarioLogeado)
+      return respuesta
+    } catch (error) {
+      return false
+    }
+
+  }
 
   const verificarExistenciaToken = () => {
     let jwt = window.localStorage.getItem("auth_token");
@@ -176,7 +203,8 @@ const ContextLoginRegister = ({ children }) => {
       console.log("Hola desde listaServiciosAdmin()");
       let jwt = window.localStorage.getItem("auth_token");
       const respuesta = await getToken(urlback, jwt);
-      setlistaServicios(respuesta);
+      setlistaServicios(respuesta);/* si lo comentas, no se ejecuta el useEffect */
+      console.log("holuuuu oasi ek serListaServicio")
     } catch (error) {
       console.log("error al cargar la lista de servicios en el panel admin");
     }
@@ -199,24 +227,20 @@ const ContextLoginRegister = ({ children }) => {
   const listaTurnos = async () => {
     try {
       const urlback = urlBackListaTurno + usuarioLogeado.id;
-
       let jwt = window.localStorage.getItem("auth_token");
       console.log("Hola desde listaTurnos()");
-
       const respuesta = await getToken(urlback, jwt);
       setarrayTurnos(respuesta);
     } catch (error) {
       console.log("error 171");
     }
   };
-
   const eliminarTurno = async (e, turnoId) => {
     try {
       e.preventDefault();
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarTurno = urlBackCancelarTurno + turnoId;
       console.log("Hola desde eliminarTurno()");
-
       const respuesta = await getToken(urlCancelarTurno, jwt);
       listaTurnos();
     } catch (error) {
@@ -227,10 +251,8 @@ const ContextLoginRegister = ({ children }) => {
   const listaTurnosAdmin = async () => {
     try {
       const urlback = urlBackListaTurnosAdmin;
-
       let jwt = window.localStorage.getItem("auth_token");
       console.log("Hola desde listaTurnosAdmin()");
-
       const respuesta = await getToken(urlback, jwt);
       setArrayTurnosAdmin(respuesta);
     } catch (error) {
@@ -325,7 +347,7 @@ const ContextLoginRegister = ({ children }) => {
       {children}
     </ContextoAdministrador.Provider>
   );
-};
+}
 
 export { ContextLoginRegister };
 export default ContextoAdministrador;

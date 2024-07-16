@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import useTitle from "./../hooks/useTitle";
@@ -7,7 +7,7 @@ import "./css/registro.css";
 const Register = () => {
   useTitle({ title: "Registro" });
 
-  const { SubmitRegistro } = useContext(ContextoAdministrador);
+  const { SubmitRegistro, AuthTokenYUsiario } = useContext(ContextoAdministrador);
 
   const [form, setform] = useState({
     userName: "",

@@ -33,6 +33,14 @@ public class AutheticationController {
 
     }
 
+    @GetMapping("/validateGetProfile")
+    public ResponseEntity<AuthenticationResponse> validateGetProfile(@RequestParam String jwt) {
+        AuthenticationResponse isValidate = autheticateService.validateGetProfile(jwt);
+        return ResponseEntity.ok(isValidate);
+
+
+    }
+
     @GetMapping("profiles")
     public ResponseEntity<Usuario> MyProfils() {
         Usuario user = autheticateService.findLogginInUser();

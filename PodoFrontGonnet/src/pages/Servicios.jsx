@@ -6,7 +6,7 @@ import Calendario from "../components/Calendario";
 import "./css/servicios.css";
 
 const Servicios = () => {
-  const { servicio, seleccionarServicio, usuarioLogeado } = useContext(
+  const { servicio, seleccionarServicio, usuarioLogeado, AuthTokenYUsiario } = useContext(
     ContextoAdministrador
   );
   const { id } = useParams();
