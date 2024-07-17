@@ -97,5 +97,20 @@ return authenticationResponse;
         return usuarioServicio.findOneByUsername(user);
 
     }
+
+    public AuthenticationResponse validateGetProfile(String jwt) {
+        try {
+            String username=jwtService.extracUsername(jwt);
+            Usuario usuario=usuarioServicio.findOneByUsername(username);
+            AuthenticationResponse authenticationResponse=new AuthenticationResponse();
+            authenticationResponse.setId(usuario.getId());
+            authenticationResponse.setUserName(usuario.getUsername());
+            authenticationResponse.setRol(String.valueOf(usuario.getRol()));
+            authenticationResponse.setJwt(jwt);
+            return authenticationResponse;
+        }catch (Exception e){
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
 

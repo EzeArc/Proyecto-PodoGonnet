@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import ContextoAdministrador from "../context/ContextLoginRegister";
-import { Route, Routes } from "react-router-dom";
+import { matchPath, Route, Routes } from "react-router-dom";
 import PublicRoutes from "./PublicRoutes";
 import AuthRoutes from "./AuthRoutes";
 
@@ -8,11 +8,11 @@ const AppRouters = () => {
   const { usuarioLogeado, AuthTokenYUsiario } = useContext(
     ContextoAdministrador
   );
-
   useEffect(() => {
-    console.log("ROUTER ACTIVO");
     AuthTokenYUsiario();
   }, [AuthTokenYUsiario]);
+
+  /* !!! */
 
   /* 
   --> AuthTokenYUsiario()

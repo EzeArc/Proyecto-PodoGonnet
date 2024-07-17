@@ -39,6 +39,8 @@ export const getToken = async (url, token) => {
     return data;
   } catch (error) {
     console.log(`Error catch de GET-TOKEN ${error}`);
+    console.log("---Creo q el tema esta acá---");
+    return null;
   }
 };
 

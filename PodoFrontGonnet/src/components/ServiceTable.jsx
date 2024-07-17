@@ -8,6 +8,7 @@ export const ServiceTable = ({ onSeleccionarServicio }) => {
 
   useEffect(() => {
     listaServiciosAdmin();
+
   }, []);
 
   return (

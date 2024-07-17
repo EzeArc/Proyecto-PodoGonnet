@@ -11,7 +11,7 @@ import "./css/inicio.css";
 const Inicio = () => {
   useTitle({ title: "Inicio" });
 
-  const { usuarioLogeado, listaServicios, serviciosBack, listaTurnos } =
+  const { usuarioLogeado, listaServicios, serviciosBack, listaTurnos, AuthTokenYUsiario } =
     useContext(ContextoAdministrador);
 
   useEffect(() => {
