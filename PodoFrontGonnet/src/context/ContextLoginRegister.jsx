@@ -118,10 +118,8 @@ const ContextLoginRegister = ({ children }) => {
       urlValidateGetUsuarioFinal,
       token
     );
-    console.log("por entrar---------------------");
     console.log(usuarioLogeado.Auth);
     if (usuarioLogeado.Auth === false && usuarioValido) {
-      console.log("pasara-----------------------????????");
       const usuarioRespuesta = {
         id: usuarioValido.id,
         userName: usuarioValido.userName,
@@ -136,8 +134,10 @@ const ContextLoginRegister = ({ children }) => {
         matchPath({ path, exact: true }, location.pathname)
       );
       if (!isExcluded) {
-        // Verifica si la ruta actual no está en las rutas excluidas
-        console.log("token vencido");
+        toast.warning("Su sesión expiro. Usted sera redirigido!", {
+          className: "toast-warning",
+          style: { width: "fit-content" },
+        });
         setTimeout(function () {
           window.location.href = "/login";
         }, 2000);
@@ -148,8 +148,6 @@ const ContextLoginRegister = ({ children }) => {
   const GetUsuarioToken = async (urlValidateGetUsuarioFinal, token) => {
     try {
       const respuesta = await getToken(urlValidateGetUsuarioFinal, token);
-      console.log("PASO EL GET TOKEEEENNN");
-      console.log(usuarioLogeado);
       return respuesta;
     } catch (error) {
       return false;
