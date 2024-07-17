@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
-
 import { get, getToken, post, postImagen, put } from "../utils/http";
 import { toast } from "sonner";
 import { matchPath } from "react-router-dom";
@@ -22,7 +22,8 @@ const urlBackListaServiciosAdmin =
   "http://localhost:8080/adminController/listaServiciosAdmin";
 const urlBackDarDeBajaServicioAdmin =
   "http://localhost:8080/adminController/AltaBajaServicio/";
-const urlValidateGetUsuario = "http://localhost:8080/api/v1/auth/validateGetProfile?jwt="
+const urlValidateGetUsuario =
+  "http://localhost:8080/api/v1/auth/validateGetProfile?jwt=";
 //creo los usuarios para recibir la data del back
 const usuarioLogin = {
   id: "",
@@ -44,6 +45,19 @@ const ContextLoginRegister = ({ children }) => {
 
   const SubmitRegistro = async (e, formRegistro) => {
     e.preventDefault();
+
+    // Llama a la función de validación
+    const errors = validateForm(formRegistro);
+    if (errors.length > 0) {
+      errors.forEach((error) => {
+        toast.warning(error, {
+          className: "toast-warning",
+          style: { width: "fit-content" },
+        });
+      });
+      return;
+    }
+
     try {
       const respuesta = await post(urlCrearUsuario, formRegistro);
       if (respuesta) {
@@ -51,6 +65,11 @@ const ContextLoginRegister = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
+      console.log("Error al ingresar los datos de usuario");
+      toast.error(`¡Error al ingresar datos del usuario: ${errors}!`, {
+        className: "toast-error",
+        style: { width: "fit-content" },
+      });
     }
   };
 
@@ -61,6 +80,7 @@ const ContextLoginRegister = ({ children }) => {
       setlistaServicios(respuesta);
     } catch (error) {
       console.log(error);
+      console.log("Error al cargar los servicios");
     }
   };
 
@@ -81,21 +101,25 @@ const ContextLoginRegister = ({ children }) => {
       setUsuarioLogeado(usuarioRespuesta);
       window.localStorage.setItem("auth_token", respuesta.jwt);
     } catch (error) {
-      console.log("No existe ese usuario maquina (linea 48");
+      console.log("Error al ingresar los datos de usuario");
+      toast.error(`¡Error al ingresar datos del usuario!`, {
+        className: "toast-error",
+        style: { width: "fit-content" },
+      });
     }
   };
-
   //VERIFICACION DE LOGIN AUTOMATICA
   const AuthTokenYUsiario = async () => {
     let token = verificarExistenciaToken();
 
     const urlFinal = urlVerificarExpiracionToken + token;
-    const urlValidateGetUsuarioFinal = urlValidateGetUsuario + token
-    const usuarioValido = await GetUsuarioToken(urlValidateGetUsuarioFinal, token);
-    console.log("por entrar---------------------")
-    console.log(usuarioLogeado.Auth)
+    const urlValidateGetUsuarioFinal = urlValidateGetUsuario + token;
+    const usuarioValido = await GetUsuarioToken(
+      urlValidateGetUsuarioFinal,
+      token
+    );
+    console.log(usuarioLogeado.Auth);
     if (usuarioLogeado.Auth === false && usuarioValido) {
-      console.log("pasara-----------------------????????")
       const usuarioRespuesta = {
         id: usuarioValido.id,
         userName: usuarioValido.userName,
@@ -105,31 +129,30 @@ const ContextLoginRegister = ({ children }) => {
       };
       setUsuarioLogeado(usuarioRespuesta);
     } else if (verificarExistenciaToken() && !usuarioValido) {
-      const excludedPaths = ['/login', 'registro', '/', '/servicio/*']; // Agrega aquí las rutas que quieres excluir
-      const isExcluded = excludedPaths.some(path =>
+      const excludedPaths = ["/login", "registro", "/", "/servicio/*"]; // Agrega aquí las rutas que quieres excluir
+      const isExcluded = excludedPaths.some((path) =>
         matchPath({ path, exact: true }, location.pathname)
       );
-      if (!isExcluded) { // Verifica si la ruta actual no está en las rutas excluidas
-        console.log("token vencido");
+      if (!isExcluded) {
+        toast.warning("Su sesión expiro. Usted sera redirigido!", {
+          className: "toast-warning",
+          style: { width: "fit-content" },
+        });
         setTimeout(function () {
           window.location.href = "/login";
         }, 2000);
       }
     }
-  }
+  };
 
   const GetUsuarioToken = async (urlValidateGetUsuarioFinal, token) => {
-
     try {
-      const respuesta = await getToken(urlValidateGetUsuarioFinal, token)
-      console.log("PASO EL GET TOKEEEENNN")
-      console.log(usuarioLogeado)
-      return respuesta
+      const respuesta = await getToken(urlValidateGetUsuarioFinal, token);
+      return respuesta;
     } catch (error) {
-      return false
+      return false;
     }
-
-  }
+  };
 
   const verificarExistenciaToken = () => {
     let jwt = window.localStorage.getItem("auth_token");
@@ -194,17 +217,19 @@ const ContextLoginRegister = ({ children }) => {
       setServicio(respuest);
     } catch (error) {
       console.log(error);
+      console.log(`Error al seleccionar servicio: ${idServicio}`);
     }
   };
 
   const listaServiciosAdmin = async () => {
     try {
       const urlback = urlBackListaServiciosAdmin;
-      console.log("Hola desde listaServiciosAdmin()");
       let jwt = window.localStorage.getItem("auth_token");
       const respuesta = await getToken(urlback, jwt);
-      setlistaServicios(respuesta);/* si lo comentas, no se ejecuta el useEffect */
-      console.log("holuuuu oasi ek serListaServicio")
+      setlistaServicios(
+        respuesta
+      ); /* si lo comentas, no se ejecuta el useEffect */
+      console.log("holuuuu oasi ek serListaServicio");
     } catch (error) {
       console.log("error al cargar la lista de servicios en el panel admin");
     }
@@ -216,10 +241,20 @@ const ContextLoginRegister = ({ children }) => {
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarServicio = urlBackDarDeBajaServicioAdmin + servicioId;
       const respuesta = await put(urlCancelarServicio, jwt);
+      if (respuesta.ok) {
+        toast.success(`¡Servicio: ${servicioId} dado de baja!`, {
+          className: "toast-success",
+          style: { width: "fit-content" },
+        });
+      }
       listaServiciosAdmin();
     } catch (error) {
+      toast.error(`Error: ${servicioId} no ha sido dado de baja!`, {
+        className: "toast-success",
+        style: { width: "fit-content" },
+      });
       console.log(
-        "error al eliminar un servicios de la lista de servicios en el admin dashboard "
+        "Error al eliminar un servicios de la lista de servicios en el admin dashboard "
       );
     }
   };
@@ -232,7 +267,7 @@ const ContextLoginRegister = ({ children }) => {
       const respuesta = await getToken(urlback, jwt);
       setarrayTurnos(respuesta);
     } catch (error) {
-      console.log("error 171");
+      console.log("Error al listar los turnos");
     }
   };
   const eliminarTurno = async (e, turnoId) => {
@@ -242,6 +277,12 @@ const ContextLoginRegister = ({ children }) => {
       const urlCancelarTurno = urlBackCancelarTurno + turnoId;
       console.log("Hola desde eliminarTurno()");
       const respuesta = await getToken(urlCancelarTurno, jwt);
+      if (respuesta.ok) {
+        toast.success(`Turno: ${turnoId} eliminado con exíto!`, {
+          className: "toast-success",
+          style: { width: "fit-content" },
+        });
+      }
       listaTurnos();
     } catch (error) {
       console.log("error ");
@@ -266,6 +307,12 @@ const ContextLoginRegister = ({ children }) => {
       let jwt = window.localStorage.getItem("auth_token");
       const urlCancelarTurno = urlBackCancelarTurnoAdmin + turnoId;
       const respuesta = await put(urlCancelarTurno, jwt);
+      if (respuesta.ok) {
+        toast.success(`Turno: ${turnoId} eliminado con exíto!`, {
+          className: "toast-success",
+          style: { width: "fit-content" },
+        });
+      }
       listaTurnosAdmin();
     } catch (error) {
       console.log("error ");
@@ -347,7 +394,7 @@ const ContextLoginRegister = ({ children }) => {
       {children}
     </ContextoAdministrador.Provider>
   );
-}
+};
 
 export { ContextLoginRegister };
 export default ContextoAdministrador;

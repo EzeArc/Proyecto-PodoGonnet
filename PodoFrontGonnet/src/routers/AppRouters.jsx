@@ -9,8 +9,8 @@ const AppRouters = () => {
     ContextoAdministrador
   );
   useEffect(() => {
-    AuthTokenYUsiario()
-  }, [AuthTokenYUsiario])
+    AuthTokenYUsiario();
+  }, [AuthTokenYUsiario]);
 
   /* !!! */
 

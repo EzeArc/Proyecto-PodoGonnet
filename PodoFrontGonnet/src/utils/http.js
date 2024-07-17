@@ -7,8 +7,10 @@ export const get = async (url) => {
         respuesta.status + "error en fecth" + respuesta.statusText
       );
     }
-    const data = await respuesta.json();
 
+    console.log(respuesta);
+    const data = await respuesta.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(`error cath de get ${error}`);
@@ -89,8 +91,8 @@ export const postImagen = async (url, servicioPodo, token) => {
     if (!respuesta.ok) {
       throw new Error(
         respuesta.status +
-        " error en fetch [post hhtp]: " +
-        respuesta.statusText
+          " error en fetch [post hhtp]: " +
+          respuesta.statusText
       );
     }
 
@@ -119,6 +121,7 @@ export const put = async (url, token) => {
         `${response.status} error en fetch [PUT HTTP]: ${response.statusText}`
       );
     }
+    return response;
   } catch (error) {
     console.log(`Error catch de put [PUT HTTPS]: ${error}`);
   }
