@@ -19,8 +19,8 @@ jobs:
           node-version: "20.x"
 
       - name: Build frontend
+        working-directory: PodoFrontGonnet
         run: |
-          cd PodoFrontGonnet
           npm install
           npm run build
 
@@ -28,4 +28,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: test
-          folder: dist
+          folder: PodoFrontGonnet/dist
