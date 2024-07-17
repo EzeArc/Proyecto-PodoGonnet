@@ -12,7 +12,6 @@ const AppRouters = () => {
   useEffect(() => {
     console.log("ROUTER ACTIVO");
     AuthTokenYUsiario();
-    console.log(`Este es el estado del usuario: ${usuarioLogeado}`);
   }, [AuthTokenYUsiario]);
 
   /* 

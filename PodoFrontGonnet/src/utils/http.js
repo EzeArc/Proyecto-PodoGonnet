@@ -7,8 +7,10 @@ export const get = async (url) => {
         respuesta.status + "error en fecth" + respuesta.statusText
       );
     }
-    const data = await respuesta.json();
 
+    console.log(respuesta);
+    const data = await respuesta.json();
+    console.log(data);
     return data;
   } catch (error) {
     console.log(`error cath de get ${error}`);
@@ -37,7 +39,6 @@ export const getToken = async (url, token) => {
     return data;
   } catch (error) {
     console.log(`Error catch de GET-TOKEN ${error}`);
-    console.log("---Creo q el tema esta acá---");
   }
 };
 
@@ -118,6 +119,7 @@ export const put = async (url, token) => {
         `${response.status} error en fetch [PUT HTTP]: ${response.statusText}`
       );
     }
+    return response;
   } catch (error) {
     console.log(`Error catch de put [PUT HTTPS]: ${error}`);
   }

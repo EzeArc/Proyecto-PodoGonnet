@@ -8,7 +8,6 @@ import { useContext } from "react";
 
 const AuthRoutes = () => {
   const { usuarioLogeado } = useContext(ContextoAdministrador);
-  console.log("----Hola USER----");
   console.log(usuarioLogeado);
   return (
     <>

@@ -219,6 +219,10 @@ const ContextLoginRegister = ({ children }) => {
       }
       listaServiciosAdmin();
     } catch (error) {
+      toast.error(`Error: ${servicioId} no ha sido dado de baja!`, {
+        className: "toast-success",
+        style: { width: "fit-content" },
+      });
       console.log(
         "Error al eliminar un servicios de la lista de servicios en el admin dashboard "
       );
