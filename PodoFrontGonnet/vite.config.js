@@ -3,7 +3,7 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "https://github.com/EzeArc/Proyecto-PodoGonnet",
+  base: "/Proyecto-PodoGonnet/",
   plugins: [react()],
   css: {
     devSourcemap: true,
