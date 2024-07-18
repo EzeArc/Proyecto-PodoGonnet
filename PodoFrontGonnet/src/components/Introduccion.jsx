@@ -1,10 +1,11 @@
 import "./css/Introduccion.css";
+import { getImageUrl } from "../utils/getImageUrl";
 
 const Introduccion = () => {
   return (
     <section className="welcome-section ">
       <img
-        src="/assets/images/human-footprints.png"
+        src={getImageUrl("/assets/images/human-footprints.png")}
         alt="Pie Izquierdo"
         className="left-foot"
       />
@@ -22,7 +23,7 @@ const Introduccion = () => {
         <strong>cuidar tus pies y brindarte una experiencia relajante</strong>.
       </p>
       <img
-        src="/assets/images/human-footprints.png"
+        src={getImageUrl("/assets/images/human-footprints.png")}
         alt="Pie Derecho"
         className="right-foot"
       />
