@@ -13,24 +13,12 @@ const AuthRoutes = () => {
     <>
       <Routes>
         <Route path="/" element={<Inicio />} />
-        <Route
-          path={`${process.env.VITE_BASE_URL}/servicio/:id`}
-          element={<Servicios />}
-        />
-        <Route
-          path={`${process.env.VITE_BASE_URL}/login`}
-          element={<Login />}
-        />
+        <Route path="/servicio/:id" element={<Servicios />} />
+        <Route path="/login" element={<Login />} />
         {usuarioLogeado.Auth === true && usuarioLogeado.Rol === "ADMIN" ? (
-          <Route
-            path={`${process.env.VITE_BASE_URL}/admin/:section`}
-            element={<Dashboard />}
-          />
+          <Route path="/admin/:section" element={<Dashboard />} />
         ) : (
-          <Route
-            path={`${process.env.VITE_BASE_URL}/login`}
-            element={<Login />}
-          />
+          <Route path="/login" element={<Login />} />
         )}
       </Routes>
     </>
