@@ -22,7 +22,7 @@ const Navbar = () => {
         </ul>
         <img
           className="logo"
-          src="/assets/images/podoGonnet-logo.webp"
+          src="/assets/icons/podoGonnet-logo.webp"
           alt="Podo Estetica"
         />
         <ul className="nav-links-items">
