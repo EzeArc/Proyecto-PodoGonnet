@@ -10,7 +10,7 @@ import "./pages/css/Toast.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ContextLoginRegister>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.VITE_BASE_URL}>
       <Navbar />
       <Toaster className="toast-success toast-error toast-warning" />
       <AppRouters />
