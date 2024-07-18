@@ -6,9 +6,8 @@ import Calendario from "../components/Calendario";
 import "./css/servicios.css";
 
 const Servicios = () => {
-  const { servicio, seleccionarServicio, usuarioLogeado, AuthTokenYUsiario } = useContext(
-    ContextoAdministrador
-  );
+  const { servicio, seleccionarServicio, usuarioLogeado, AuthTokenYUsiario } =
+    useContext(ContextoAdministrador);
   const { id } = useParams();
 
   useEffect(() => {
@@ -32,7 +31,7 @@ const Servicios = () => {
           <img className="hero-service-img" src={imagenURL} alt="Spa de pies" />
           <img
             className="hero-img2"
-            src="/src/assets/ImagenesOptimizadas/spa-treatment-product-female-feet-hand-spa_1150-37700.jpg.url"
+            src="/assets/images/spa-treatment-product-female-feet-hand-spa_1150-37700.jpg.url"
             alt="Spa de pies"
           />
           <div className="hero-service-text-container">

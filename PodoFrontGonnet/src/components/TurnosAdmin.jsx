@@ -98,7 +98,7 @@ export const TurnosAdmin = () => {
                             >
                               <img
                                 className="admin-icons"
-                                src="/src/assets/ImagenesOptimizadas/icons/calendar-cog.svg"
+                                src="/assets/icons/calendar-cog.svg"
                                 alt="Modificar Turno"
                               />
                             </button>
@@ -112,7 +112,7 @@ export const TurnosAdmin = () => {
                             >
                               <img
                                 className="admin-icons"
-                                src="/src/assets/ImagenesOptimizadas/icons/calendar-x.svg"
+                                src="/assets/icons/calendar-x.svg"
                                 alt="Eliminar Turno"
                               />
                             </button>

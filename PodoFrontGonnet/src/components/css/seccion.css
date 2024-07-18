@@ -44,7 +44,6 @@ body {
 }
 
 @media (min-width: 576px) {
-
   /* Small devices (landscape phones, 576px and up) */
   .hero-text-container {
     margin-bottom: 0;
@@ -108,7 +107,6 @@ body {
 }
 
 @media (min-width: 576px) {
-
   /* Small devices (landscape phones, 576px and up) */
   .hero-btn {
     margin-top: 0;
@@ -127,13 +125,12 @@ body {
 
 .hero-bg {
   min-height: 350px;
-  background-image: url("/src/assets/ImagenesOptimizadas/woman-s-feet-bowl-with-water-petal_329181-18808.jpg");
+  background-image: url("/src/assets/images/woman-s-feet-bowl-with-water-petal_329181-18808.jpg");
   background-position: center;
   background-size: cover;
 }
 
 @media (min-width: 768px) {
-
   /* Medium devices (tablets, 768px and up) */
   .hero-clipped {
     max-width: 66.6667%;

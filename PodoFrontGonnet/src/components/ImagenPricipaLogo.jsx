@@ -4,7 +4,7 @@ const ImagenPricipaLogo = () => {
   return (
     <img
       className="imagenPricipalInicio"
-      src="/src/assets/ImagenesOptimizadas/ImagenPrincipalInicio.png"
+      src="/assets/images/ImagenPrincipalInicio.png"
     />
   );
 };
