@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import ContextoAdministrador from "../context/ContextLoginRegister";
 import "./css/nav.css";
 
-const baseURL = "/Proyecto-PodoGonnet"; // Asegúrate de que esto coincide con tu base URL
-
 const Navbar = () => {
   const { usuarioLogeado, logOut } = useContext(ContextoAdministrador);
   return (
@@ -24,7 +22,7 @@ const Navbar = () => {
         </ul>
         <img
           className="logo"
-          src={`${baseURL}/assets/icons/podoGonnet-logo.webp`}
+          src="/assets/images/podoGonnet-logo.webp"
           alt="Podo Estetica"
         />
         <ul className="nav-links-items">
