@@ -8,10 +8,19 @@ const PublicRoutes = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Inicio />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Register />} />
-        <Route path="/servicio/:id" element={<Servicios />} />
+        <Route path={`${process.env.VITE_BASE_URL}`} element={<Inicio />} />
+        <Route
+          path={`${process.env.VITE_BASE_URL}/login`}
+          element={<Login />}
+        />
+        <Route
+          path={`${process.env.VITE_BASE_URL}/registro`}
+          element={<Register />}
+        />
+        <Route
+          path={`${process.env.VITE_BASE_URL}/servicio/:id`}
+          element={<Servicios />}
+        />
       </Routes>
     </>
   );
