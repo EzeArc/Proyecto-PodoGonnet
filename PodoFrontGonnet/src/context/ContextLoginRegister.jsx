@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 import { get, getToken, post, postImagen, put } from "../utils/http";
 import { toast } from "sonner";
 import { matchPath } from "react-router-dom";
+import { validateForm } from "../utils/validations";
 
 // http://localhost:8080/api/v1/auth/authenticate
 //url para hacer login
@@ -169,18 +170,18 @@ const ContextLoginRegister = ({ children }) => {
     e.preventDefault();
 
     // Validación de campos requeridos
-    if (
-      !serviPodo.nombre ||
-      !serviPodo.descripcion ||
-      !serviPodo.costo ||
-      !serviPodo.imagen
-    ) {
-      toast.warning("Por favor, completa todos los campos requeridos.", {
-        className: "toast-warning",
-        style: { width: "fit-content" },
-      });
-      return;
-    }
+    /*     if (
+          !serviPodo.nombre ||
+          !serviPodo.descripcion ||
+          !serviPodo.costo ||
+          !serviPodo.imagen
+        ) {
+          toast.warning("Por favor, completa todos los campos requeridos.", {
+            className: "toast-warning",
+            style: { width: "fit-content" },
+          });
+          return;
+        } */
 
     try {
       const token = verificarExistenciaToken();
