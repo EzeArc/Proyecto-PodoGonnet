@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: podogonnet
+    container_name: my-mysql-docker-compose
+    volumes:
+      - mysql-volume:/var/lib/mysql
+  my-app-back:
+    build:
+      context: /PodoBackGonnet/App/.
+      dockerfile: Dockerfile
+    image: my-app-back:v1
+    ports:
+      - 8080:8080
+    container_name: my-app-docker-compose
+    depends_on:
+      - db
+  my-app-front:
+    build:
+      context: /PodoFrontGonnet/.
+      dockerfile: Dockerfile
+    image: my-app-frontend:v1
+    ports:
+        - 5173:5173
+    depends_on:
+      - my-app-back
+    container_name: my-app-frontend-docker-compose
+
+
+
+volumes:
+  mysql-volume:
