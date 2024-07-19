@@ -33,6 +33,12 @@
   width: 120px;
   object-fit: cover;
   object-position: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 1rem #ff9abf);
 }
 
 .btn {
