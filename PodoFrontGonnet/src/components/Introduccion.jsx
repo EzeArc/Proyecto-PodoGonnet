@@ -9,7 +9,7 @@ const Introduccion = () => {
         className="left-foot"
       />
 
-      <div className="welcome-title">Bienvenidos a Podo Estética La Plata</div>
+      <h2 className="welcome-title">Bienvenidos a Podo Estética La Plata</h2>
       <p className="welcome-text">
         En Podo Estética, nos dedicamos a mejorar y{" "}
         <strong>mantener la belleza de tus pies y uñas</strong>. Combinando
