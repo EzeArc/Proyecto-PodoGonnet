@@ -5,7 +5,7 @@ body {
 }
 
 .headline {
-  left: 130px;
+  left: calc(100% - 93vw);
   position: relative;
 }
 
@@ -82,19 +82,17 @@ body {
 
 .hero-bg {
   min-height: 350px;
-  background-image: url("/src/assets/ImagenesOptimizadas/woman-s-feet-bowl-with-water-petal_329181-18808.jpg");
-  background-position: center;
-  background-size: cover;
+  background: url("/src/assets/ImagenesOptimizadas/woman-s-feet-bowl-with-water-petal_329181-18808.jpg")
+    center center/cover no-repeat;
 }
 
 @media screen and (max-width: 768px) {
   .hero-container {
     flex-direction: column;
     text-align: center;
-    height: 50vh;
-    background-image: url("/src/assets/ImagenesOptimizadas/woman-s-feet-bowl-with-water-petal_329181-18808.jpg");
-    background-position: center;
-    background-size: cover;
+    height: 90vh;
+    background: url("/src/assets/ImagenesOptimizadas/woman-s-feet-bowl-with-water-petal_329181-18808.jpg")
+      center center/cover no-repeat;
   }
 
   .hero-text-container {
