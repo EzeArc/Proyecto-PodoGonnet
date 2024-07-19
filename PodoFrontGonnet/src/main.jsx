@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { ContextLoginRegister } from "./context/ContextLoginRegister";
 import AppRouters from "./routers/AppRouters";
-import Footer from "./components/Footer";
+import { Footer } from "./components/Footer";
 import "../src/styles.css";
 import { Toaster } from "sonner";
 import "./pages/css/Toast.css";
