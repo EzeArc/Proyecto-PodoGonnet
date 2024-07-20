@@ -7,7 +7,9 @@ import "./css/registro.css";
 const Register = () => {
   useTitle({ title: "Registro" });
 
-  const { SubmitRegistro, AuthTokenYUsiario } = useContext(ContextoAdministrador);
+  const { SubmitRegistro, AuthTokenYUsiario } = useContext(
+    ContextoAdministrador
+  );
 
   const [form, setform] = useState({
     userName: "",
@@ -25,7 +27,7 @@ const Register = () => {
   };
 
   return (
-    <main className="d-flex justify-content-center align items-center mt-5">
+    <main className="register-container">
       <form className="form-register">
         <div className="form-border-inset">
           <p className="form-vertical-advice">Ingrese sus datos</p>
