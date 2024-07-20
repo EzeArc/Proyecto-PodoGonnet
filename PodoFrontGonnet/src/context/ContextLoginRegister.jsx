@@ -7,25 +7,20 @@ import { validateForm } from "../utils/validations";
 
 // http://localhost:8080/api/v1/auth/authenticate
 //url para hacer login
-const urlPostLogin = "http://localhost:8080/api/v1/auth/authenticate";
-const urlVerificarExpiracionToken = `http://localhost:8080/api/v1/auth/validate?jwt=`;
-const urlCrearServicio = "http://localhost:8080/adminController/crearServicio";
-const urlCrearUsuario = "http://localhost:8080/api/v1/register";
-const urlListaServicios = "http://localhost:8080/portal/listaSerivicios";
-const urlServicioGet = "http://localhost:8080/portal/servicioPodo/";
-const urlBackListaTurno = "http://localhost:8080/Turnos/listaTurnos/";
-const urlBackCancelarTurno = "http://localhost:8080/Turnos/cancelarTurno/";
-const urlBackListaTurnosAdmin =
-  "http://localhost:8080/adminController/listaTurnoAdmin";
-const urlBackCancelarTurnoAdmin =
-  "http://localhost:8080/adminController/AltaBaja/";
-const urlBackListaServiciosAdmin =
-  "http://localhost:8080/adminController/listaServiciosAdmin";
-const urlBackDarDeBajaServicioAdmin =
-  "http://localhost:8080/adminController/AltaBajaServicio/";
-const urlValidateGetUsuario =
-  "http://localhost:8080/api/v1/auth/validateGetProfile?jwt=";
-//creo los usuarios para recibir la data del back
+const urlPostLogin = import.meta.env.VITE_ENDPOINT_urlPostLogin
+const urlVerificarExpiracionToken = import.meta.env.VITE_ENDPOINT_urlVerificarExpiracionToken
+const urlCrearServicio = import.meta.env.VITE_ENDPOINT_urlCrearServicio
+const urlCrearUsuario = import.meta.env.VITE_ENDPOINT_urlCrearUsuario
+const urlListaServicios = import.meta.env.VITE_ENDPOINT_urlListaServicios
+const urlServicioGet = import.meta.env.VITE_ENDPOINT_urlServicioGet
+const urlBackListaTurno = import.meta.env.VITE_ENDPOINT_urlBackListaTurno
+const urlBackCancelarTurno = import.meta.env.VITE_ENDPOINT_urlBackCancelarTurno
+const urlBackListaTurnosAdmin = import.meta.env.VITE_ENDPOINT_urlBackListaTurnosAdmin
+const urlBackCancelarTurnoAdmin = import.meta.env.VITE_ENDPOINT_urlBackListaTurnosAdmin
+const urlBackListaServiciosAdmin = import.meta.env.VITE_ENDPOINT_urlBackCancelarTurnoAdmin
+const urlBackDarDeBajaServicioAdmin = import.meta.env.VITE_ENDPOINT_urlBackListaServiciosAdmin
+const urlValidateGetUsuario = import.meta.env.VITE_ENDPOINT_urlValidateGetUsuario
+
 const usuarioLogin = {
   id: "",
   userName: "",
