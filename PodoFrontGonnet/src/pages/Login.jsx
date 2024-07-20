@@ -28,12 +28,13 @@ const Login = () => {
   };
 
   return (
-    <main className="d-flex justify-content-center align items-center mt-5">
+    <main className="login-container">
       <form className="form-login">
         <div className="login-border-inset">
           <p className="login-text-vertical">BIENVENIDO</p>
           <div className="login-input">
             <input
+              className="userName-input"
               type="text"
               placeholder="Nombre de usuario"
               id="loginUserName"
@@ -41,6 +42,7 @@ const Login = () => {
               onChange={handleChangelogin}
             />
             <input
+              className="password-input"
               type="password"
               placeholder="Contraseña"
               id="loginPassword"
